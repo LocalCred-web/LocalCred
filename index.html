@@ -5,7 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>LocalCred — Local Reputation Management</title>
-  <meta name="description" content="LocalCred helps high-consideration local businesses improve, monitor, and manage their online reputation.">
+  <meta
+    name="description"
+    content="LocalCred helps high-consideration local businesses improve, monitor, and manage their online reputation."
+  >
 
   <style>
     * {
@@ -44,6 +47,13 @@
       color: inherit;
     }
 
+    button,
+    input,
+    select,
+    textarea {
+      font: inherit;
+    }
+
     .container {
       width: min(1120px, 92%);
       margin: 0 auto;
@@ -55,7 +65,7 @@
       position: sticky;
       top: 0;
       z-index: 100;
-      background: rgba(255,255,255,0.94);
+      background: rgba(255, 255, 255, 0.94);
       backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border);
     }
@@ -124,7 +134,7 @@
 
     .hero-grid {
       display: grid;
-      grid-template-columns: 1.05fr .95fr;
+      grid-template-columns: 1.05fr 0.95fr;
       gap: 65px;
       align-items: center;
     }
@@ -183,7 +193,9 @@
       border-radius: 8px;
       font-size: 15px;
       font-weight: 700;
-      transition: .2s ease;
+      transition: 0.2s ease;
+      cursor: pointer;
+      border: none;
     }
 
     .btn-primary {
@@ -213,13 +225,13 @@
       color: #98a2b3;
     }
 
-    /* DASHBOARD MOCKUP */
+    /* DASHBOARD */
 
     .dashboard {
       background: white;
       border: 1px solid var(--border);
       border-radius: 15px;
-      box-shadow: 0 20px 55px rgba(16,35,63,.12);
+      box-shadow: 0 20px 55px rgba(16, 35, 63, 0.12);
       overflow: hidden;
     }
 
@@ -264,7 +276,7 @@
 
     .metrics {
       display: grid;
-      grid-template-columns: repeat(3,1fr);
+      grid-template-columns: repeat(3, 1fr);
       gap: 10px;
       margin-bottom: 20px;
     }
@@ -353,7 +365,7 @@
       color: var(--navy);
     }
 
-    /* GENERAL SECTIONS */
+    /* GENERAL */
 
     section {
       padding: 90px 0;
@@ -370,12 +382,12 @@
       font-size: 13px;
       font-weight: 800;
       text-transform: uppercase;
-      letter-spacing: .8px;
+      letter-spacing: 0.8px;
       margin-bottom: 9px;
     }
 
     h2 {
-      font-size: clamp(31px,4vw,43px);
+      font-size: clamp(31px, 4vw, 43px);
       letter-spacing: -1.5px;
       line-height: 1.15;
       color: var(--navy);
@@ -395,7 +407,7 @@
 
     .problem-grid {
       display: grid;
-      grid-template-columns: repeat(3,1fr);
+      grid-template-columns: repeat(3, 1fr);
       gap: 18px;
     }
 
@@ -433,7 +445,7 @@
 
     .services-grid {
       display: grid;
-      grid-template-columns: repeat(3,1fr);
+      grid-template-columns: repeat(3, 1fr);
       gap: 18px;
     }
 
@@ -470,12 +482,11 @@
 
     .process-grid {
       display: grid;
-      grid-template-columns: repeat(4,1fr);
+      grid-template-columns: repeat(4, 1fr);
       gap: 15px;
     }
 
     .process-step {
-      position: relative;
       background: white;
       border: 1px solid var(--border);
       border-radius: 12px;
@@ -506,11 +517,47 @@
       color: var(--muted);
     }
 
+    /* WHY LOCALCRED */
+
+    .why {
+      background: white;
+    }
+
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .why-card {
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 25px 20px;
+      background: white;
+    }
+
+    .why-card h3 {
+      color: var(--navy);
+      font-size: 16px;
+      margin-bottom: 8px;
+    }
+
+    .why-card p {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .why-icon {
+      font-size: 22px;
+      margin-bottom: 14px;
+      color: var(--blue);
+    }
+
     /* PRICING */
 
     .pricing-grid {
       display: grid;
-      grid-template-columns: repeat(3,1fr);
+      grid-template-columns: repeat(3, 1fr);
       gap: 18px;
       align-items: stretch;
     }
@@ -527,7 +574,7 @@
     .pricing-card.featured {
       border: 2px solid var(--blue);
       position: relative;
-      box-shadow: 0 10px 30px rgba(37,99,235,.10);
+      box-shadow: 0 10px 30px rgba(37, 99, 235, 0.10);
     }
 
     .popular {
@@ -598,6 +645,13 @@
       width: 100%;
     }
 
+    .pricing-note {
+      text-align: center;
+      margin-top: 30px;
+      color: #98a2b3;
+      font-size: 13px;
+    }
+
     /* SCALPEL */
 
     .scalpel {
@@ -622,6 +676,10 @@
       margin-bottom: 20px;
     }
 
+    .scalpel .section-label {
+      color: #60a5fa;
+    }
+
     .scalpel-list {
       list-style: none;
     }
@@ -640,8 +698,8 @@
     }
 
     .scalpel-box {
-      background: rgba(255,255,255,.06);
-      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.12);
       border-radius: 14px;
       padding: 30px;
     }
@@ -682,6 +740,155 @@
       font-weight: 600;
     }
 
+    /* AUDIT CTA / FORM */
+
+    .audit-section {
+      background: #f1f6ff;
+      border-top: 1px solid #dbeafe;
+    }
+
+    .audit-layout {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 55px;
+      align-items: start;
+    }
+
+    .audit-copy h2 {
+      max-width: 600px;
+    }
+
+    .audit-copy > p {
+      color: var(--muted);
+      font-size: 16px;
+      margin-bottom: 25px;
+      max-width: 560px;
+    }
+
+    .audit-points {
+      list-style: none;
+      margin-top: 20px;
+    }
+
+    .audit-points li {
+      position: relative;
+      padding-left: 25px;
+      margin-bottom: 13px;
+      color: #475467;
+      font-size: 14px;
+    }
+
+    .audit-points li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      color: var(--green);
+      font-weight: 800;
+    }
+
+    .audit-note {
+      margin-top: 24px;
+      font-size: 13px;
+      color: #98a2b3;
+    }
+
+    .audit-form-wrap {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 15px;
+      padding: 30px;
+      box-shadow: 0 14px 40px rgba(16, 35, 63, 0.08);
+    }
+
+    .audit-form-title {
+      font-size: 21px;
+      font-weight: 800;
+      color: var(--navy);
+      margin-bottom: 5px;
+    }
+
+    .audit-form-subtitle {
+      color: var(--muted);
+      font-size: 13px;
+      margin-bottom: 24px;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 17px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+
+    .form-group.full {
+      grid-column: 1 / -1;
+    }
+
+    .form-group label {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--navy);
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      border: 1px solid #d0d5dd;
+      border-radius: 8px;
+      padding: 11px 12px;
+      color: var(--text);
+      background: white;
+      outline: none;
+      transition: 0.2s ease;
+      font-size: 13px;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--blue);
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.09);
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 95px;
+    }
+
+    .required {
+      color: var(--red);
+    }
+
+    .form-submit {
+      margin-top: 20px;
+      width: 100%;
+    }
+
+    .form-disclaimer {
+      text-align: center;
+      color: #98a2b3;
+      font-size: 11px;
+      margin-top: 11px;
+      line-height: 1.5;
+    }
+
+    .success-message {
+      display: none;
+      margin-top: 15px;
+      padding: 12px;
+      background: #ecfdf3;
+      color: #166534;
+      border-radius: 8px;
+      font-size: 13px;
+      text-align: center;
+    }
+
     /* FAQ */
 
     .faq {
@@ -707,7 +914,7 @@
     .faq-question span {
       font-size: 20px;
       color: var(--muted);
-      transition: transform .2s;
+      transition: transform 0.2s;
     }
 
     .faq-answer {
@@ -725,25 +932,40 @@
       transform: rotate(45deg);
     }
 
-    /* CTA */
+    /* FINAL CTA */
 
-    .cta {
-      background: #f1f6ff;
-      border-top: 1px solid #dbeafe;
+    .final-cta {
+      background: var(--navy);
+      color: white;
       text-align: center;
     }
 
-    .cta h2 {
-      max-width: 700px;
+    .final-cta .section-label {
+      color: #60a5fa;
+    }
+
+    .final-cta h2 {
+      color: white;
+      max-width: 760px;
       margin-left: auto;
       margin-right: auto;
     }
 
-    .cta p {
-      max-width: 590px;
-      margin: 0 auto 25px;
-      color: var(--muted);
+    .final-cta p {
+      max-width: 600px;
+      margin: 0 auto 26px;
+      color: #cbd5e1;
       font-size: 16px;
+    }
+
+    .final-cta .btn-secondary {
+      background: transparent;
+      color: white;
+      border-color: rgba(255, 255, 255, 0.25);
+    }
+
+    .final-cta .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.06);
     }
 
     /* FOOTER */
@@ -779,8 +1001,18 @@
 
     /* MOBILE */
 
-    @media (max-width: 850px) {
+    @media (max-width: 950px) {
+      .why-grid {
+        grid-template-columns: 1fr 1fr;
+      }
 
+      .audit-layout {
+        grid-template-columns: 1fr;
+        gap: 35px;
+      }
+    }
+
+    @media (max-width: 850px) {
       .nav-links a:not(.nav-cta) {
         display: none;
       }
@@ -816,7 +1048,6 @@
     }
 
     @media (max-width: 560px) {
-
       h1 {
         letter-spacing: -1.7px;
       }
@@ -827,7 +1058,8 @@
 
       .problem-grid,
       .services-grid,
-      .process-grid {
+      .process-grid,
+      .why-grid {
         grid-template-columns: 1fr;
       }
 
@@ -855,6 +1087,18 @@
       .hero-buttons .btn {
         width: 100%;
       }
+
+      .form-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .form-group.full {
+        grid-column: auto;
+      }
+
+      .audit-form-wrap {
+        padding: 22px;
+      }
     }
   </style>
 </head>
@@ -876,7 +1120,7 @@
         <a href="#pricing">Pricing</a>
         <a href="#process">How It Works</a>
         <a href="#faq">FAQ</a>
-        <a href="#contact" class="nav-cta">Get a Reputation Audit</a>
+        <a href="#audit" class="nav-cta">Get a Reputation Audit</a>
       </div>
 
     </div>
@@ -897,7 +1141,8 @@
         </div>
 
         <h1>
-          Turn your reputation into a <span>competitive advantage.</span>
+          Turn your reputation into a
+          <span>competitive advantage.</span>
         </h1>
 
         <p class="hero-text">
@@ -907,13 +1152,15 @@
         </p>
 
         <div class="hero-buttons">
-          <a href="#contact" class="btn btn-primary">
+
+          <a href="#audit" class="btn btn-primary">
             Get Your Free Reputation Audit
           </a>
 
           <a href="#services" class="btn btn-secondary">
             See What We Manage
           </a>
+
         </div>
 
         <p class="hero-note">
@@ -1307,8 +1554,8 @@
         </h2>
 
         <p class="section-description">
-          LocalCred handles the ongoing reputation work so you can focus
-          on running your business.
+          We start by understanding your current reputation, then build
+          the system around what your business actually needs.
         </p>
 
       </div>
@@ -1327,8 +1574,8 @@
           </h3>
 
           <p>
-            We establish a baseline of your current reputation and
-            identify the biggest opportunities.
+            We establish a baseline of your current reputation, identify
+            competitor gaps, and find the biggest opportunities.
           </p>
 
         </div>
@@ -1341,12 +1588,12 @@
           </div>
 
           <h3>
-            Build
+            Recommend
           </h3>
 
           <p>
-            We set up monitoring, review workflows, response processes,
-            and feedback-request systems.
+            We show you what we found and recommend the level of support
+            that makes sense for your business.
           </p>
 
         </div>
@@ -1363,8 +1610,8 @@
           </h3>
 
           <p>
-            Your reputation is monitored continuously and new reviews
-            are handled consistently.
+            Once you're onboarded, LocalCred handles the recurring
+            reputation work and monitoring.
           </p>
 
         </div>
@@ -1381,8 +1628,104 @@
           </h3>
 
           <p>
-            Monthly reporting highlights trends, competitors, and
-            customer feedback worth acting on.
+            Monthly reporting highlights trends, customer concerns,
+            competitors, and opportunities worth acting on.
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- WHY LOCALCRED -->
+
+  <section class="why">
+
+    <div class="container">
+
+      <div class="section-header">
+
+        <div class="section-label">
+          Why LocalCred
+        </div>
+
+        <h2>
+          Reputation management without the usual gimmicks.
+        </h2>
+
+        <p class="section-description">
+          Our goal isn't to manipulate your reputation. It's to build a
+          repeatable system around genuine customer feedback.
+        </p>
+
+      </div>
+
+
+      <div class="why-grid">
+
+        <div class="why-card">
+
+          <div class="why-icon">✓</div>
+
+          <h3>
+            Genuine reviews
+          </h3>
+
+          <p>
+            We focus on requesting authentic feedback from real customers,
+            not manufacturing or buying reviews.
+          </p>
+
+        </div>
+
+
+        <div class="why-card">
+
+          <div class="why-icon">◎</div>
+
+          <h3>
+            Human oversight
+          </h3>
+
+          <p>
+            Automation can handle repetitive workflows while important
+            reputation decisions still receive human attention.
+          </p>
+
+        </div>
+
+
+        <div class="why-card">
+
+          <div class="why-icon">↗</div>
+
+          <h3>
+            Actionable insights
+          </h3>
+
+          <p>
+            We look beyond star ratings to identify recurring complaints,
+            customer patterns, and competitive opportunities.
+          </p>
+
+        </div>
+
+
+        <div class="why-card">
+
+          <div class="why-icon">⌂</div>
+
+          <h3>
+            Built for local businesses
+          </h3>
+
+          <p>
+            Our approach is designed around businesses where customers
+            frequently compare providers before contacting one.
           </p>
 
         </div>
@@ -1411,8 +1754,8 @@
         </h2>
 
         <p class="section-description">
-          Start with the essentials and scale as your reputation system
-          becomes more sophisticated.
+          Pricing gives you a clear idea of where our plans start.
+          We recommend the right fit after reviewing your business.
         </p>
 
       </div>
@@ -1430,7 +1773,7 @@
           </div>
 
           <div class="pricing-description">
-            Reputation maintenance for businesses that want the basics handled.
+            Reputation maintenance for businesses that want the essentials handled.
           </div>
 
           <div class="price">
@@ -1448,8 +1791,8 @@
 
           </ul>
 
-          <a href="#contact" class="btn btn-secondary pricing-button">
-            Get Started
+          <a href="#audit" class="btn btn-secondary pricing-button">
+            See If Shield Is Right For You
           </a>
 
         </div>
@@ -1490,8 +1833,8 @@
 
           </ul>
 
-          <a href="#contact" class="btn btn-primary pricing-button">
-            Choose Citadel
+          <a href="#audit" class="btn btn-primary pricing-button">
+            Request a Citadel Audit
           </a>
 
         </div>
@@ -1526,13 +1869,18 @@
 
           </ul>
 
-          <a href="#contact" class="btn btn-secondary pricing-button">
-            Talk to Us
+          <a href="#audit" class="btn btn-secondary pricing-button">
+            Discuss Citadel+
           </a>
 
         </div>
 
       </div>
+
+      <p class="pricing-note">
+        No payment is required to request an audit. We'll review your situation
+        before recommending a plan.
+      </p>
 
     </div>
 
@@ -1630,6 +1978,289 @@
         <div class="industry">Moving Companies</div>
         <div class="industry">Wedding Services</div>
         <div class="industry">Veterinary Clinics</div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- AUDIT / LEAD FORM -->
+
+  <section class="audit-section" id="audit">
+
+    <div class="container audit-layout">
+
+      <div class="audit-copy">
+
+        <div class="section-label">
+          Free Reputation Audit
+        </div>
+
+        <h2>
+          See how your reputation compares before you spend another dollar on marketing.
+        </h2>
+
+        <p>
+          We'll review your current online reputation and competitive position
+          and show you the biggest opportunities worth addressing.
+        </p>
+
+        <ul class="audit-points">
+
+          <li>
+            Your current Google rating and review count
+          </li>
+
+          <li>
+            Recent review activity and response performance
+          </li>
+
+          <li>
+            Recurring complaints or customer concerns
+          </li>
+
+          <li>
+            How your reputation compares with nearby competitors
+          </li>
+
+          <li>
+            The biggest opportunity we see for your business
+          </li>
+
+        </ul>
+
+        <div class="audit-note">
+          No commitment. No credit card required.
+        </div>
+
+      </div>
+
+
+      <div class="audit-form-wrap">
+
+        <div class="audit-form-title">
+          Request Your Free Audit
+        </div>
+
+        <div class="audit-form-subtitle">
+          Tell us a little about your business and we'll take it from there.
+        </div>
+
+        <!--
+          IMPORTANT:
+          Replace FORM_ENDPOINT_HERE with your actual Formspree endpoint.
+
+          Example:
+          action="https://formspree.io/f/xxxxxxxx"
+
+          The rest of the page does not need to change.
+        -->
+
+        <form
+          id="auditForm"
+          action="FORM_ENDPOINT_HERE"
+          method="POST"
+        >
+
+          <div class="form-grid">
+
+            <div class="form-group">
+
+              <label for="businessName">
+                Business Name <span class="required">*</span>
+              </label>
+
+              <input
+                type="text"
+                id="businessName"
+                name="business_name"
+                placeholder="Apex Home Services"
+                required
+              >
+
+            </div>
+
+
+            <div class="form-group">
+
+              <label for="businessType">
+                Business Type <span class="required">*</span>
+              </label>
+
+              <select
+                id="businessType"
+                name="business_type"
+                required
+              >
+
+                <option value="" selected disabled>
+                  Select an industry
+                </option>
+
+                <option>Roofing</option>
+                <option>HVAC</option>
+                <option>Plumbing</option>
+                <option>Electrical</option>
+                <option>Water Damage Restoration</option>
+                <option>Garage Doors</option>
+                <option>Landscaping</option>
+                <option>Pest Control</option>
+                <option>Auto Repair</option>
+                <option>Moving Company</option>
+                <option>Wedding Services</option>
+                <option>Veterinary Clinic</option>
+                <option>Other</option>
+
+              </select>
+
+            </div>
+
+
+            <div class="form-group full">
+
+              <label for="website">
+                Business Website
+              </label>
+
+              <input
+                type="url"
+                id="website"
+                name="website"
+                placeholder="https://example.com"
+              >
+
+            </div>
+
+
+            <div class="form-group">
+
+              <label for="city">
+                City / Service Area <span class="required">*</span>
+              </label>
+
+              <input
+                type="text"
+                id="city"
+                name="city_service_area"
+                placeholder="Houston, TX"
+                required
+              >
+
+            </div>
+
+
+            <div class="form-group">
+
+              <label for="email">
+                Best Email <span class="required">*</span>
+              </label>
+
+              <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="you@business.com"
+                required
+              >
+
+            </div>
+
+
+            <div class="form-group">
+
+              <label for="phone">
+                Phone Number
+              </label>
+
+              <input
+                type="tel"
+                id="phone"
+                name="phone"
+                placeholder="(713) 555-0123"
+              >
+
+            </div>
+
+
+            <div class="form-group">
+
+              <label for="concern">
+                Biggest Concern
+              </label>
+
+              <select
+                id="concern"
+                name="biggest_concern"
+              >
+
+                <option value="" selected>
+                  Select one
+                </option>
+
+                <option>Getting more genuine reviews</option>
+                <option>Responding to reviews</option>
+                <option>Negative reviews</option>
+                <option>Competitors outranking us</option>
+                <option>Understanding customer feedback</option>
+                <option>Not sure</option>
+
+              </select>
+
+            </div>
+
+
+            <div class="form-group full">
+
+              <label for="message">
+                Anything else we should know?
+              </label>
+
+              <textarea
+                id="message"
+                name="message"
+                placeholder="Tell us anything relevant about your reputation or what you'd like us to look at."
+              ></textarea>
+
+            </div>
+
+          </div>
+
+
+          <input
+            type="hidden"
+            name="_subject"
+            value="New LocalCred Reputation Audit Request"
+          >
+
+          <input
+            type="hidden"
+            name="_captcha"
+            value="false"
+          >
+
+          <button
+            type="submit"
+            class="btn btn-primary form-submit"
+          >
+            Request My Free Audit →
+          </button>
+
+          <div class="form-disclaimer">
+            By submitting this form, you are requesting a free reputation
+            review. There is no obligation to purchase a service.
+          </div>
+
+          <div
+            class="success-message"
+            id="successMessage"
+          >
+            Thanks — your audit request was submitted successfully.
+            We'll review your information and follow up with you.
+          </div>
+
+        </form>
 
       </div>
 
@@ -1745,14 +2376,31 @@
         <div class="faq-item">
 
           <div class="faq-question">
-            How do we get started?
+            What happens after I request an audit?
             <span>+</span>
           </div>
 
           <div class="faq-answer">
-            Start with a reputation audit. We'll review your current
-            online reputation and identify the highest-impact opportunities
-            before recommending a plan.
+            We'll review your current reputation, look at relevant
+            competitors, identify the biggest opportunities, and use that
+            information to determine whether LocalCred is a good fit.
+            If it is, we'll recommend the level of support that makes sense
+            for your business.
+          </div>
+
+        </div>
+
+
+        <div class="faq-item">
+
+          <div class="faq-question">
+            Do I have to buy a plan after the audit?
+            <span>+</span>
+          </div>
+
+          <div class="faq-answer">
+            No. The audit is intended to give you useful information about
+            your reputation whether or not you become a LocalCred client.
           </div>
 
         </div>
@@ -1764,9 +2412,9 @@
   </section>
 
 
-  <!-- CTA -->
+  <!-- FINAL CTA -->
 
-  <section class="cta" id="contact">
+  <section class="final-cta">
 
     <div class="container">
 
@@ -1779,20 +2427,27 @@
       </h2>
 
       <p>
-        We'll look at your reviews, rating, response activity, and
-        competitive position and show you where the biggest opportunities are.
+        See your current reputation, competitive position, and biggest
+        opportunities in one straightforward audit.
       </p>
 
-      <!--
-        Replace this email address with your actual business email.
-      -->
+      <div class="hero-buttons" style="justify-content:center;">
 
-      <a
-        href="mailto:hello@localcred.com?subject=LocalCred%20Reputation%20Audit"
-        class="btn btn-primary"
-      >
-        Request a Reputation Audit
-      </a>
+        <a
+          href="#audit"
+          class="btn btn-primary"
+        >
+          Get Your Free Reputation Audit
+        </a>
+
+        <a
+          href="#pricing"
+          class="btn btn-secondary"
+        >
+          View Pricing
+        </a>
+
+      </div>
 
     </div>
 
@@ -1810,10 +2465,23 @@
       </div>
 
       <div class="footer-links">
-        <a href="#services">Services</a>
-        <a href="#pricing">Pricing</a>
-        <a href="#faq">FAQ</a>
-        <a href="#contact">Contact</a>
+
+        <a href="#services">
+          Services
+        </a>
+
+        <a href="#pricing">
+          Pricing
+        </a>
+
+        <a href="#faq">
+          FAQ
+        </a>
+
+        <a href="#audit">
+          Get an Audit
+        </a>
+
       </div>
 
     </div>
@@ -1825,7 +2493,7 @@
 
   <script>
 
-    // FAQ accordion
+    /* FAQ ACCORDION */
 
     const faqItems = document.querySelectorAll(".faq-item");
 
@@ -1835,9 +2503,13 @@
 
       question.addEventListener("click", () => {
 
-        const currentlyActive = document.querySelector(".faq-item.active");
+        const currentlyActive =
+          document.querySelector(".faq-item.active");
 
-        if (currentlyActive && currentlyActive !== item) {
+        if (
+          currentlyActive &&
+          currentlyActive !== item
+        ) {
           currentlyActive.classList.remove("active");
         }
 
@@ -1848,25 +2520,88 @@
     });
 
 
-    // Close mobile menu / smooth scrolling behavior
+    /* SMOOTH SCROLL */
 
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 
-      anchor.addEventListener("click", function(e) {
+      anchor.addEventListener("click", function (e) {
 
-        const target = document.querySelector(this.getAttribute("href"));
+        const target =
+          document.querySelector(this.getAttribute("href"));
 
         if (target) {
 
           e.preventDefault();
 
           target.scrollIntoView({
-            behavior: "smooth"
+            behavior: "smooth",
+            block: "start"
           });
 
         }
 
       });
+
+    });
+
+
+    /* AUDIT FORM */
+
+    const auditForm = document.getElementById("auditForm");
+    const successMessage = document.getElementById("successMessage");
+
+    auditForm.addEventListener("submit", async function (e) {
+
+      e.preventDefault();
+
+      const submitButton =
+        auditForm.querySelector("button[type='submit']");
+
+      submitButton.disabled = true;
+      submitButton.textContent = "Submitting...";
+
+      try {
+
+        const response = await fetch(
+          auditForm.action,
+          {
+            method: "POST",
+            body: new FormData(auditForm),
+            headers: {
+              "Accept": "application/json"
+            }
+          }
+        );
+
+        if (response.ok) {
+
+          auditForm.reset();
+
+          successMessage.style.display = "block";
+
+          submitButton.textContent = "Request Submitted ✓";
+
+          setTimeout(() => {
+            submitButton.disabled = false;
+            submitButton.textContent = "Request My Free Audit →";
+          }, 4000);
+
+        } else {
+
+          throw new Error("Form submission failed.");
+
+        }
+
+      } catch (error) {
+
+        submitButton.disabled = false;
+        submitButton.textContent = "Request My Free Audit →";
+
+        alert(
+          "There was a problem submitting your request. Please try again or email hello@localcred.com."
+        );
+
+      }
 
     });
 
