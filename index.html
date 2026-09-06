@@ -30,7 +30,6 @@
       --white:#ffffff;
       --green:#16a34a;
       --light-green:#ecfdf3;
-      --red:#dc2626;
       --shadow:0 18px 55px rgba(16,35,63,.08);
       --max-width:1180px;
     }
@@ -52,14 +51,6 @@
       line-height:1.6;
       font-size:17px;
       -webkit-font-smoothing:antialiased;
-    }
-
-    body,
-    button,
-    input,
-    select,
-    textarea{
-      -webkit-tap-highlight-color:transparent;
     }
 
     a{
@@ -410,23 +401,23 @@
       font-weight:850;
     }
 
+    .score-detail{
+      color:var(--muted);
+      font-size:11px;
+      line-height:1.45;
+    }
+
     .score-badge{
+      width:58px;
+      height:58px;
       display:flex;
       align-items:center;
       justify-content:center;
-      width:58px;
-      height:58px;
       border-radius:50%;
       background:var(--navy);
       color:#fff;
       font-size:20px;
       font-weight:950;
-    }
-
-    .score-detail{
-      color:var(--muted);
-      font-size:11px;
-      line-height:1.45;
     }
 
     .metric-grid{
@@ -577,7 +568,7 @@
       line-height:1.52;
     }
 
-    /* TRUST */
+    /* TRUST BAR */
     .trust-bar{
       border-top:1px solid var(--border);
       border-bottom:1px solid var(--border);
@@ -684,10 +675,10 @@
     }
 
     .outcome-list{
-      margin-top:26px;
       display:flex;
       flex-direction:column;
       gap:12px;
+      margin-top:26px;
     }
 
     .outcome-item{
@@ -758,9 +749,9 @@
     .insight-note{
       margin-top:18px;
       padding:14px 15px;
+      border:1px solid #ecd7ad;
       border-radius:11px;
       background:var(--light-amber);
-      border:1px solid #ecd7ad;
     }
 
     .insight-note strong{
@@ -818,7 +809,7 @@
       line-height:1.75;
     }
 
-    /* HOW */
+    /* HOW IT WORKS */
     .how{
       background:#fff;
       border-top:1px solid var(--border);
@@ -1059,7 +1050,7 @@
       display:flex;
       align-items:flex-end;
       justify-content:space-between;
-      gap:35px;
+      gap:40px;
       margin-bottom:52px;
     }
 
@@ -1068,10 +1059,15 @@
     }
 
     .pricing-note{
-      max-width:300px;
+      max-width:350px;
+      margin-bottom:3px;
       color:var(--muted);
-      font-size:13px;
-      line-height:1.65;
+      font-size:14px;
+      line-height:1.7;
+    }
+
+    .pricing-note strong{
+      color:var(--navy);
     }
 
     .pricing-grid{
@@ -1170,6 +1166,30 @@
     .price-btn{
       width:100%;
       margin-top:25px;
+    }
+
+    .pricing-footer{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      flex-direction:column;
+      gap:5px;
+      margin-top:30px;
+      text-align:center;
+    }
+
+    .pricing-footer strong{
+      color:var(--navy);
+      font-size:15px;
+    }
+
+    .pricing-footer span{
+      color:var(--muted);
+      font-size:13px;
+    }
+
+    .pricing-footer .btn{
+      margin-top:9px;
     }
 
     /* SCALPEL */
@@ -1618,7 +1638,7 @@
       }
 
       .pricing-note{
-        margin-top:20px;
+        margin-top:18px;
       }
 
       .form-grid{
@@ -1762,6 +1782,7 @@
   <!-- NAV -->
   <nav>
     <div class="container nav-inner">
+
       <a class="brand" href="#top" aria-label="LocalCred home">
         <img
           src="./logo.svg"
@@ -1769,6 +1790,7 @@
           class="brand-logo"
           onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-flex';"
         >
+
         <strong
           style="display:none;align-items:center;color:#10233f;font-size:16px;letter-spacing:.06em;"
         >
@@ -1778,14 +1800,15 @@
 
       <div class="nav-links">
         <a href="#services">Services</a>
-        <a href="#pricing">Pricing</a>
         <a href="#how-it-works">How It Works</a>
+        <a href="#pricing">Pricing</a>
         <a href="#faq">FAQ</a>
       </div>
 
       <a class="btn btn-primary nav-cta" href="#audit">
         Get Your Free Audit
       </a>
+
     </div>
   </nav>
 
@@ -1796,9 +1819,14 @@
       <div class="container hero-grid">
 
         <div class="hero-copy">
-          <div class="eyebrow">Reputation intelligence for local businesses</div>
 
-          <h1>Make sure your reputation isn't costing you customers.</h1>
+          <div class="eyebrow">
+            Reputation intelligence for local businesses
+          </div>
+
+          <h1>
+            Make sure your reputation isn't costing you customers.
+          </h1>
 
           <p>
             LocalCred helps high-consideration local businesses protect,
@@ -1807,6 +1835,7 @@
           </p>
 
           <div class="hero-actions">
+
             <a class="btn btn-primary" href="#audit">
               Get Your Free Reputation Audit
             </a>
@@ -1814,6 +1843,7 @@
             <a class="btn btn-secondary" href="#services">
               See What We Manage
             </a>
+
           </div>
 
           <div class="hero-note">
@@ -1825,10 +1855,12 @@
             <span>Respond consistently</span>
             <span>Turn feedback into useful insights</span>
           </div>
+
         </div>
 
-        <!-- AUDIT PREVIEW -->
+        <!-- SAMPLE AUDIT -->
         <div class="audit-wrap">
+
           <div class="audit-card">
 
             <div class="audit-topbar">
@@ -1839,8 +1871,12 @@
             <div class="audit-body">
 
               <div class="audit-title-row">
+
                 <div>
-                  <div class="audit-business-name">Apex Home Services</div>
+                  <div class="audit-business-name">
+                    Apex Home Services
+                  </div>
+
                   <div class="audit-business-meta">
                     Houston, TX · Home Services
                   </div>
@@ -1850,19 +1886,32 @@
                   <div class="rating">4.8</div>
                   <div class="rating-label">Google Rating</div>
                 </div>
+
               </div>
 
               <div class="score-strip">
+
                 <div class="score-main">
-                  <div class="score-label">LocalCred Reputation Score</div>
-                  <div class="score-text">Strong foundation · room to improve</div>
+
+                  <div class="score-label">
+                    LocalCred Reputation Score
+                  </div>
+
+                  <div class="score-text">
+                    Strong foundation · room to improve
+                  </div>
+
                   <div class="score-detail">
                     Based on reputation activity, response performance,
                     review volume, customer themes, and local competition.
                   </div>
+
                 </div>
 
-                <div class="score-badge">84</div>
+                <div class="score-badge">
+                  84
+                </div>
+
               </div>
 
               <div class="metric-grid">
@@ -1890,7 +1939,10 @@
               <div class="audit-panels">
 
                 <div class="audit-panel">
-                  <div class="audit-panel-title">Competitive Snapshot</div>
+
+                  <div class="audit-panel-title">
+                    Competitive Snapshot
+                  </div>
 
                   <div class="competitor-row">
                     <span>Apex Home Services</span>
@@ -1911,19 +1963,32 @@
                     <span>Competitor C</span>
                     <span class="competitor-score">4.6 ★</span>
                   </div>
+
                 </div>
 
                 <div class="audit-panel">
-                  <div class="audit-panel-title">Biggest Opportunity</div>
+
+                  <div class="audit-panel-title">
+                    Biggest Opportunity
+                  </div>
 
                   <div class="opportunity-box">
-                    <div class="opportunity-label">Insight</div>
-                    <div class="opportunity-title">Scheduling</div>
+
+                    <div class="opportunity-label">
+                      Insight
+                    </div>
+
+                    <div class="opportunity-title">
+                      Scheduling
+                    </div>
+
                     <div class="opportunity-text">
                       Mentioned repeatedly in recent reviews.
                       Worth investigating operationally.
                     </div>
+
                   </div>
+
                 </div>
 
               </div>
@@ -1937,18 +2002,24 @@
           </div>
 
           <div class="audit-callout">
-            <div class="audit-callout-label">What this shows</div>
+
+            <div class="audit-callout-label">
+              What this shows
+            </div>
+
             <p>
               Your reputation is more than a star rating. It's the combination
               of customer feedback, activity, response behavior, and competition.
             </p>
+
           </div>
+
         </div>
 
       </div>
     </section>
 
-    <!-- TRUST BAR -->
+    <!-- TRUST -->
     <div class="trust-bar">
       <div class="container trust-grid">
 
@@ -1980,7 +2051,10 @@
       <div class="container problem-grid">
 
         <div class="problem-copy">
-          <div class="eyebrow">The problem</div>
+
+          <div class="eyebrow">
+            The problem
+          </div>
 
           <h2>
             Your reputation is being evaluated before you ever speak to the customer.
@@ -1991,125 +2065,54 @@
             and local competitors in minutes. The problem isn't knowing reviews
             matter. It's consistently managing everything around them.
           </p>
+
         </div>
 
         <div class="problem-list">
 
           <div class="problem-item">
+
             <div class="problem-number">01</div>
 
             <div>
               <h3>Reviews go unanswered</h3>
+
               <p>
                 Important customer feedback can sit untouched while potential
                 customers form their impression from what they see online.
               </p>
             </div>
+
           </div>
 
           <div class="problem-item">
+
             <div class="problem-number">02</div>
 
             <div>
               <h3>Good experiences aren't captured</h3>
+
               <p>
                 Satisfied customers may never leave feedback unless the process
                 is simple, timely, and consistently managed.
               </p>
             </div>
+
           </div>
 
           <div class="problem-item">
+
             <div class="problem-number">03</div>
 
             <div>
               <h3>Patterns stay hidden</h3>
+
               <p>
                 Reading reviews individually is easy. Identifying recurring
                 complaints, customer themes, and competitive gaps is harder.
               </p>
             </div>
-          </div>
 
-        </div>
-      </div>
-    </section>
-
-    <!-- OUTCOME -->
-    <section class="section outcome">
-      <div class="container outcome-grid">
-
-        <div class="outcome-copy">
-          <div class="eyebrow">More than review management</div>
-
-          <h2>
-            Don't just collect reviews. Know what they're telling you.
-          </h2>
-
-          <p>
-            LocalCred turns scattered customer feedback into a simple operating
-            picture: what customers like, what keeps coming up, how you compare,
-            and what deserves attention next.
-          </p>
-
-          <div class="outcome-list">
-            <div class="outcome-item">
-              Track the reputation signals that actually matter
-            </div>
-
-            <div class="outcome-item">
-              Surface recurring customer complaints and themes
-            </div>
-
-            <div class="outcome-item">
-              Compare your reputation with local competitors
-            </div>
-
-            <div class="outcome-item">
-              Turn the findings into practical next steps
-            </div>
-          </div>
-        </div>
-
-        <div class="outcome-card">
-
-          <div class="outcome-card-label">Example monthly insight</div>
-
-          <div class="outcome-card-title">
-            Your reputation is strong. Your response speed is the gap.
-          </div>
-
-          <div class="mini-report">
-
-            <div class="mini-row">
-              <span>Google rating</span>
-              <strong>4.8 ★</strong>
-            </div>
-
-            <div class="mini-row">
-              <span>Review velocity</span>
-              <strong>+34 / 30 days</strong>
-            </div>
-
-            <div class="mini-row">
-              <span>Response rate</span>
-              <strong>98%</strong>
-            </div>
-
-            <div class="mini-row">
-              <span>Competitive position</span>
-              <strong>#2 locally</strong>
-            </div>
-
-          </div>
-
-          <div class="insight-note">
-            <strong>Recommended focus</strong>
-
-            <p>
-              Maintain review growth while shortening response time on new
-              negative feedback.
-            </p>
           </div>
 
         </div>
@@ -2122,7 +2125,10 @@
       <div class="container">
 
         <div class="section-heading">
-          <div class="eyebrow">What we manage</div>
+
+          <div class="eyebrow">
+            What we manage
+          </div>
 
           <h2>
             A reputation system, not a review gimmick.
@@ -2133,6 +2139,7 @@
             reputation, grow legitimate feedback, and understand what customers
             are saying.
           </p>
+
         </div>
 
         <div class="services-list">
@@ -2140,7 +2147,9 @@
           <div class="service-row">
             <div class="service-number">01</div>
 
-            <h3>Review Monitoring</h3>
+            <h3>
+              Review Monitoring
+            </h3>
 
             <p>
               Monitor Google, Yelp, Facebook, and other relevant platforms
@@ -2151,7 +2160,9 @@
           <div class="service-row">
             <div class="service-number">02</div>
 
-            <h3>Response Management</h3>
+            <h3>
+              Response Management
+            </h3>
 
             <p>
               Keep responses timely, professional, and aligned with the
@@ -2162,7 +2173,9 @@
           <div class="service-row">
             <div class="service-number">03</div>
 
-            <h3>Review Generation</h3>
+            <h3>
+              Review Generation
+            </h3>
 
             <p>
               Create simple feedback-request workflows that make it easier
@@ -2173,7 +2186,9 @@
           <div class="service-row">
             <div class="service-number">04</div>
 
-            <h3>Reputation Analytics</h3>
+            <h3>
+              Reputation Analytics
+            </h3>
 
             <p>
               Track rating, volume, velocity, response performance,
@@ -2184,7 +2199,9 @@
           <div class="service-row">
             <div class="service-number">05</div>
 
-            <h3>Competitor Intelligence</h3>
+            <h3>
+              Competitor Intelligence
+            </h3>
 
             <p>
               See how your review activity and reputation compare with nearby
@@ -2195,7 +2212,9 @@
           <div class="service-row">
             <div class="service-number">06</div>
 
-            <h3>Reputation Insights</h3>
+            <h3>
+              Reputation Insights
+            </h3>
 
             <p>
               Turn review patterns into practical signals about what customers
@@ -2204,6 +2223,7 @@
           </div>
 
         </div>
+
       </div>
     </section>
 
@@ -2212,16 +2232,21 @@
       <div class="container">
 
         <div class="section-heading">
-          <div class="eyebrow">How it works</div>
+
+          <div class="eyebrow">
+            How it works
+          </div>
 
           <h2>
             Start with the picture. Then build the system.
           </h2>
 
           <p>
-            We begin with an audit, identify the highest-value opportunities,
-            and build ongoing management around them.
+            Every engagement starts with a free audit. We identify the
+            highest-value opportunities first, then recommend the level of
+            ongoing support that makes sense.
           </p>
+
         </div>
 
         <div class="timeline">
@@ -2229,7 +2254,9 @@
           <div class="step">
             <div class="step-number">01</div>
 
-            <h3>Audit</h3>
+            <h3>
+              Audit
+            </h3>
 
             <p>
               We review your current reputation, review activity, competitors,
@@ -2240,18 +2267,22 @@
           <div class="step">
             <div class="step-number">02</div>
 
-            <h3>Recommend</h3>
+            <h3>
+              Recommend
+            </h3>
 
             <p>
               We identify the highest-value opportunities and recommend the
-              level of ongoing management that makes sense for your business.
+              appropriate level of ongoing management.
             </p>
           </div>
 
           <div class="step">
             <div class="step-number">03</div>
 
-            <h3>Manage</h3>
+            <h3>
+              Manage
+            </h3>
 
             <p>
               LocalCred handles recurring monitoring, responses, feedback
@@ -2262,15 +2293,18 @@
           <div class="step">
             <div class="step-number">04</div>
 
-            <h3>Improve</h3>
+            <h3>
+              Improve
+            </h3>
 
             <p>
               Each month gives you a clearer picture of what is changing,
-              what customers are saying, and what should happen next.
+              what customers are saying, and what deserves attention next.
             </p>
           </div>
 
         </div>
+
       </div>
     </section>
 
@@ -2280,7 +2314,9 @@
 
         <div class="report-copy">
 
-          <div class="eyebrow">Monthly reputation intelligence</div>
+          <div class="eyebrow">
+            Monthly reputation intelligence
+          </div>
 
           <h2>
             Your monthly report should tell you what changed — and what to do next.
@@ -2301,8 +2337,13 @@
         <div class="report-card">
 
           <div class="report-header">
-            <strong>LocalCred Reputation Report</strong>
-            <span>August 2026</span>
+            <strong>
+              LocalCred Reputation Report
+            </strong>
+
+            <span>
+              August 2026
+            </span>
           </div>
 
           <div class="report-body">
@@ -2310,8 +2351,13 @@
             <div class="report-score">
 
               <div>
-                <small>Reputation Score</small>
-                <div class="report-score-number">84/100</div>
+                <small>
+                  Reputation Score
+                </small>
+
+                <div class="report-score-number">
+                  84/100
+                </div>
               </div>
 
               <div class="report-score-status">
@@ -2355,15 +2401,20 @@
             </div>
 
             <div class="report-insight">
-              <strong>Biggest insight</strong>
+
+              <strong>
+                Biggest insight
+              </strong>
 
               <p>
                 Scheduling remains the most common negative theme.
                 Recommend reviewing appointment communication.
               </p>
+
             </div>
 
           </div>
+
         </div>
 
       </div>
@@ -2374,7 +2425,10 @@
       <div class="container">
 
         <div class="section-heading">
-          <div class="eyebrow">Why LocalCred</div>
+
+          <div class="eyebrow">
+            Why LocalCred
+          </div>
 
           <h2>
             Enterprise-style discipline without enterprise complexity.
@@ -2384,48 +2438,66 @@
             You don't need another massive software platform. You need the
             important reputation work handled consistently.
           </p>
+
         </div>
 
         <div class="why-grid">
 
           <div class="why-block">
-            <h3>Focused</h3>
+
+            <h3>
+              Focused
+            </h3>
 
             <p>
               We focus on the reputation platforms and signals that matter
               to your business instead of burying you under unnecessary tools
               and dashboards.
             </p>
+
           </div>
 
           <div class="why-block">
-            <h3>Personal</h3>
+
+            <h3>
+              Personal
+            </h3>
 
             <p>
               LocalCred is a managed service. We handle the recurring work
               instead of asking owners to learn and operate another platform.
             </p>
+
           </div>
 
           <div class="why-block">
-            <h3>Actionable</h3>
+
+            <h3>
+              Actionable
+            </h3>
 
             <p>
               Reports are built around changes, customer themes, competitive
               context, and practical next steps — not vanity metrics.
             </p>
+
           </div>
 
           <div class="why-block">
-            <h3>Genuine</h3>
+
+            <h3>
+              Genuine
+            </h3>
 
             <p>
               Review generation is based on legitimate customer feedback.
               No fake reviews, fabricated experiences, or rating manipulation.
             </p>
+
           </div>
 
         </div>
+
       </div>
     </section>
 
@@ -2436,21 +2508,32 @@
         <div class="pricing-intro">
 
           <div class="section-heading">
-            <div class="eyebrow">Pricing</div>
+
+            <div class="eyebrow">
+              Pricing
+            </div>
 
             <h2>
-              Protect. Grow. Optimize.
+              Three levels of ongoing support.
             </h2>
 
             <p>
-              Every engagement begins with an audit so your recommendation is
-              based on the business — not a generic package.
+              These packages show what ongoing management can look like.
+              Your free audit comes first so we can recommend the right level
+              based on your business and reputation.
             </p>
+
           </div>
 
           <div class="pricing-note">
-            Pricing is designed around ongoing reputation management rather
-            than software access alone.
+            <strong>
+              No pressure to choose a package online.
+            </strong>
+
+            <br>
+
+            Every engagement starts with a free reputation audit and a
+            personalized recommendation.
           </div>
 
         </div>
@@ -2460,13 +2543,17 @@
           <!-- SHIELD -->
           <div class="price-card">
 
-            <div class="price-tag">Protect</div>
+            <div class="price-tag">
+              Protect
+            </div>
 
-            <h3>The Shield</h3>
+            <h3>
+              The Shield
+            </h3>
 
             <p class="price-description">
-              Core reputation protection for businesses that need consistent
-              monitoring and response coverage.
+              For businesses that mainly need their reputation consistently
+              monitored and maintained.
             </p>
 
             <div class="price">
@@ -2474,16 +2561,35 @@
             </div>
 
             <div class="price-features">
-              <div class="price-feature">Google review monitoring</div>
-              <div class="price-feature">Response management</div>
-              <div class="price-feature">Negative-review alerts</div>
-              <div class="price-feature">Review-request templates</div>
-              <div class="price-feature">Review link / QR setup</div>
-              <div class="price-feature">Monthly reputation report</div>
+
+              <div class="price-feature">
+                Google review monitoring
+              </div>
+
+              <div class="price-feature">
+                Response management
+              </div>
+
+              <div class="price-feature">
+                Negative-review alerts
+              </div>
+
+              <div class="price-feature">
+                Review-request templates
+              </div>
+
+              <div class="price-feature">
+                Review link / QR setup
+              </div>
+
+              <div class="price-feature">
+                Monthly reputation report
+              </div>
+
             </div>
 
             <a class="btn btn-secondary price-btn" href="#audit">
-              See If Shield Is Right For You
+              Get Your Free Audit
             </a>
 
           </div>
@@ -2491,13 +2597,17 @@
           <!-- CITADEL -->
           <div class="price-card featured">
 
-            <div class="price-tag">Most Popular</div>
+            <div class="price-tag">
+              Most Popular
+            </div>
 
-            <h3>The Citadel</h3>
+            <h3>
+              The Citadel
+            </h3>
 
             <p class="price-description">
-              Reputation growth plus analytics and competitive intelligence
-              for businesses that want an ongoing system.
+              For businesses that want active review growth, analytics,
+              and competitor intelligence.
             </p>
 
             <div class="price">
@@ -2505,18 +2615,43 @@
             </div>
 
             <div class="price-features">
-              <div class="price-feature">Everything in Shield</div>
-              <div class="price-feature">Automated review-request campaigns</div>
-              <div class="price-feature">SMS / email workflows</div>
-              <div class="price-feature">Review analytics</div>
-              <div class="price-feature">Competitor monitoring</div>
-              <div class="price-feature">Google Business Profile monitoring</div>
-              <div class="price-feature">Recurring complaint analysis</div>
-              <div class="price-feature">Monthly strategy report</div>
+
+              <div class="price-feature">
+                Everything in Shield
+              </div>
+
+              <div class="price-feature">
+                Automated review-request campaigns
+              </div>
+
+              <div class="price-feature">
+                SMS / email workflows
+              </div>
+
+              <div class="price-feature">
+                Review analytics
+              </div>
+
+              <div class="price-feature">
+                Competitor monitoring
+              </div>
+
+              <div class="price-feature">
+                Google Business Profile monitoring
+              </div>
+
+              <div class="price-feature">
+                Recurring complaint analysis
+              </div>
+
+              <div class="price-feature">
+                Monthly strategy report
+              </div>
+
             </div>
 
             <a class="btn btn-primary price-btn" href="#audit">
-              Request a Citadel Audit
+              Get Your Free Audit
             </a>
 
           </div>
@@ -2524,13 +2659,17 @@
           <!-- CITADEL+ -->
           <div class="price-card">
 
-            <div class="price-tag">Optimize</div>
+            <div class="price-tag">
+              Optimize
+            </div>
 
-            <h3>The Citadel+</h3>
+            <h3>
+              The Citadel+
+            </h3>
 
             <p class="price-description">
-              Advanced reputation intelligence for larger businesses,
-              higher reputational exposure, or multiple locations.
+              For businesses with greater complexity, multiple locations,
+              or a need for deeper reputation intelligence.
             </p>
 
             <div class="price">
@@ -2538,23 +2677,65 @@
             </div>
 
             <div class="price-features">
-              <div class="price-feature">Everything in Citadel</div>
-              <div class="price-feature">Multi-platform monitoring</div>
-              <div class="price-feature">3–5 competitors</div>
-              <div class="price-feature">Advanced analytics</div>
-              <div class="price-feature">Priority negative-review monitoring</div>
-              <div class="price-feature">Quarterly competitive analysis</div>
-              <div class="price-feature">Multi-location support</div>
-              <div class="price-feature">Customized strategy</div>
+
+              <div class="price-feature">
+                Everything in Citadel
+              </div>
+
+              <div class="price-feature">
+                Multi-platform monitoring
+              </div>
+
+              <div class="price-feature">
+                3–5 competitors
+              </div>
+
+              <div class="price-feature">
+                Advanced analytics
+              </div>
+
+              <div class="price-feature">
+                Priority negative-review monitoring
+              </div>
+
+              <div class="price-feature">
+                Quarterly competitive analysis
+              </div>
+
+              <div class="price-feature">
+                Multi-location support
+              </div>
+
+              <div class="price-feature">
+                Customized strategy
+              </div>
+
             </div>
 
             <a class="btn btn-secondary price-btn" href="#audit">
-              Discuss Citadel+
+              Get Your Free Audit
             </a>
 
           </div>
 
         </div>
+
+        <div class="pricing-footer">
+
+          <strong>
+            Not sure which fits? That's what the audit is for.
+          </strong>
+
+          <span>
+            We'll review your current reputation before recommending anything.
+          </span>
+
+          <a class="btn btn-primary" href="#audit">
+            Get Your Free Audit
+          </a>
+
+        </div>
+
       </div>
     </section>
 
@@ -2595,10 +2776,23 @@
           </div>
 
           <div class="scalpel-list">
-            <div>✓ No upfront payment</div>
-            <div>✓ Case-specific review assessment</div>
-            <div>✓ Policy-based dispute submission</div>
-            <div>✓ Pay after verified resolution</div>
+
+            <div>
+              ✓ No upfront payment
+            </div>
+
+            <div>
+              ✓ Case-specific review assessment
+            </div>
+
+            <div>
+              ✓ Policy-based dispute submission
+            </div>
+
+            <div>
+              ✓ Pay after verified resolution
+            </div>
+
           </div>
 
           <div class="scalpel-note">
@@ -2625,7 +2819,9 @@
 
         <div>
 
-          <div class="eyebrow">Who we serve</div>
+          <div class="eyebrow">
+            Who we serve
+          </div>
 
           <h2>
             Built for businesses where trust influences the sale.
@@ -2654,16 +2850,19 @@
           <div class="industry-pill">Veterinary Clinics</div>
 
         </div>
+
       </div>
     </section>
 
-    <!-- AUDIT -->
+    <!-- FREE AUDIT -->
     <section class="section audit-section" id="audit">
       <div class="container audit-grid">
 
         <div class="audit-copy">
 
-          <div class="eyebrow">Free reputation audit</div>
+          <div class="eyebrow">
+            Free reputation audit
+          </div>
 
           <h2>
             See what your reputation is telling prospects before you spend anything.
@@ -2706,7 +2905,9 @@
 
         <div class="form-card">
 
-          <h3>Request your audit</h3>
+          <h3>
+            Request your audit
+          </h3>
 
           <p>
             Tell us a little about the business and we'll take a look.
@@ -2721,7 +2922,10 @@
             <div class="form-grid">
 
               <div class="field">
-                <label for="businessName">Business Name</label>
+
+                <label for="businessName">
+                  Business Name
+                </label>
 
                 <input
                   type="text"
@@ -2730,10 +2934,14 @@
                   placeholder="Your business name"
                   required
                 >
+
               </div>
 
               <div class="field">
-                <label for="businessType">Business Type</label>
+
+                <label for="businessType">
+                  Business Type
+                </label>
 
                 <select
                   id="businessType"
@@ -2755,10 +2963,14 @@
                   <option>Veterinary Clinic</option>
                   <option>Other</option>
                 </select>
+
               </div>
 
               <div class="field full">
-                <label for="website">Business Website</label>
+
+                <label for="website">
+                  Business Website
+                </label>
 
                 <input
                   type="url"
@@ -2766,10 +2978,14 @@
                   name="Business Website"
                   placeholder="https://yourbusiness.com"
                 >
+
               </div>
 
               <div class="field">
-                <label for="city">City / Service Area</label>
+
+                <label for="city">
+                  City / Service Area
+                </label>
 
                 <input
                   type="text"
@@ -2778,10 +2994,14 @@
                   placeholder="Houston, TX"
                   required
                 >
+
               </div>
 
               <div class="field">
-                <label for="email">Best Email</label>
+
+                <label for="email">
+                  Best Email
+                </label>
 
                 <input
                   type="email"
@@ -2790,10 +3010,14 @@
                   placeholder="you@company.com"
                   required
                 >
+
               </div>
 
               <div class="field full">
-                <label for="concern">Biggest Concern</label>
+
+                <label for="concern">
+                  Biggest Concern
+                </label>
 
                 <select
                   id="concern"
@@ -2809,6 +3033,7 @@
                   <option>I'm not sure</option>
                   <option>Other</option>
                 </select>
+
               </div>
 
             </div>
@@ -2856,19 +3081,29 @@
       <div class="container">
 
         <div class="section-heading">
-          <div class="eyebrow">FAQ</div>
+
+          <div class="eyebrow">
+            FAQ
+          </div>
 
           <h2>
             Questions businesses usually have.
           </h2>
+
         </div>
 
         <div class="faq-grid">
 
           <div class="faq-item">
+
             <button class="faq-question" type="button">
-              <span>Do you create fake reviews?</span>
-              <span class="faq-icon">+</span>
+              <span>
+                Do you create fake reviews?
+              </span>
+
+              <span class="faq-icon">
+                +
+              </span>
             </button>
 
             <div class="faq-answer">
@@ -2878,12 +3113,19 @@
                 consistent.
               </p>
             </div>
+
           </div>
 
           <div class="faq-item">
+
             <button class="faq-question" type="button">
-              <span>Do you need to manage every review site?</span>
-              <span class="faq-icon">+</span>
+              <span>
+                Do you need to manage every review site?
+              </span>
+
+              <span class="faq-icon">
+                +
+              </span>
             </button>
 
             <div class="faq-answer">
@@ -2893,12 +3135,19 @@
                 useful for your industry or market.
               </p>
             </div>
+
           </div>
 
           <div class="faq-item">
+
             <button class="faq-question" type="button">
-              <span>Can you guarantee that a negative review will be removed?</span>
-              <span class="faq-icon">+</span>
+              <span>
+                Can you guarantee that a negative review will be removed?
+              </span>
+
+              <span class="faq-icon">
+                +
+              </span>
             </button>
 
             <div class="faq-answer">
@@ -2908,12 +3157,19 @@
                 policy-based disputes.
               </p>
             </div>
+
           </div>
 
           <div class="faq-item">
+
             <button class="faq-question" type="button">
-              <span>Do I need to pay before getting an audit?</span>
-              <span class="faq-icon">+</span>
+              <span>
+                Do I need to pay before getting an audit?
+              </span>
+
+              <span class="faq-icon">
+                +
+              </span>
             </button>
 
             <div class="faq-answer">
@@ -2922,12 +3178,19 @@
                 determine what, if anything, your business actually needs.
               </p>
             </div>
+
           </div>
 
           <div class="faq-item">
+
             <button class="faq-question" type="button">
-              <span>What makes LocalCred different from reputation software?</span>
-              <span class="faq-icon">+</span>
+              <span>
+                What makes LocalCred different from reputation software?
+              </span>
+
+              <span class="faq-icon">
+                +
+              </span>
             </button>
 
             <div class="faq-answer">
@@ -2938,12 +3201,19 @@
                 insights and recommendations.
               </p>
             </div>
+
           </div>
 
           <div class="faq-item">
+
             <button class="faq-question" type="button">
-              <span>What businesses are the best fit?</span>
-              <span class="faq-icon">+</span>
+              <span>
+                What businesses are the best fit?
+              </span>
+
+              <span class="faq-icon">
+                +
+              </span>
             </button>
 
             <div class="faq-answer">
@@ -2953,9 +3223,11 @@
                 an estimate tend to benefit most from systematic management.
               </p>
             </div>
+
           </div>
 
         </div>
+
       </div>
     </section>
 
@@ -2966,6 +3238,7 @@
         <div class="final-card">
 
           <div>
+
             <h2>
               Find out what your reputation is telling prospects.
             </h2>
@@ -2973,6 +3246,7 @@
             <p>
               Start with a free LocalCred reputation audit.
             </p>
+
           </div>
 
           <a class="btn" href="#audit">
@@ -2991,10 +3265,15 @@
     <div class="container footer-inner">
 
       <div class="footer-brand">
-        <strong>LOCALCRED</strong>
+
+        <strong>
+          LOCALCRED
+        </strong>
+
         <span>
           Reputation intelligence for local businesses.
         </span>
+
       </div>
 
       <div class="footer-copy">
@@ -3008,6 +3287,7 @@
     // FAQ accordion
     document.querySelectorAll(".faq-question").forEach(button => {
       button.addEventListener("click", () => {
+
         const item = button.closest(".faq-item");
         const answer = item.querySelector(".faq-answer");
         const isOpen = item.classList.contains("open");
@@ -3021,6 +3301,7 @@
           item.classList.add("open");
           answer.style.maxHeight = answer.scrollHeight + "px";
         }
+
       });
     });
 
@@ -3030,6 +3311,7 @@
     const formSuccess = document.getElementById("formSuccess");
 
     auditForm.addEventListener("submit", async (event) => {
+
       event.preventDefault();
 
       const originalText = submitButton.textContent;
@@ -3038,6 +3320,7 @@
       submitButton.textContent = "Submitting...";
 
       try {
+
         const response = await fetch(auditForm.action, {
           method: "POST",
           body: new FormData(auditForm),
@@ -3047,6 +3330,7 @@
         });
 
         if (response.ok) {
+
           auditForm.reset();
           formSuccess.style.display = "block";
           submitButton.textContent = "Request Submitted ✓";
@@ -3055,17 +3339,24 @@
             submitButton.disabled = false;
             submitButton.textContent = originalText;
           }, 4000);
+
         } else {
+
           throw new Error("Form submission failed.");
+
         }
+
       } catch (error) {
+
         submitButton.disabled = false;
         submitButton.textContent = originalText;
 
         alert(
           "Something went wrong while submitting the form. Please try again or email hello@localcred.com."
         );
+
       }
+
     });
   </script>
 
