@@ -7,11 +7,11 @@
   <title>LocalCred</title>
 
   <!-- WEBSITE FAVICON -->
-  <link rel="icon" type="image/png" href="./favicon.png">
+  <link rel="icon" type="image/svg+xml" href="./favicon.svg">
 
   <meta
     name="description"
-    content="LocalCred helps high-consideration local businesses improve, monitor, and manage their online reputation."
+    content="LocalCred helps high-consideration local businesses understand, improve, and manage their online reputation."
   >
 
   <style>
@@ -23,16 +23,29 @@
 
     :root {
       --navy: #10233f;
+      --navy-deep: #0a182b;
       --blue: #2563eb;
       --blue-dark: #1d4ed8;
       --light-blue: #eff6ff;
+      --blue-border: #dbeafe;
+
+      --amber: #c58a2b;
+      --light-amber: #fff8e8;
+
       --text: #172033;
       --muted: #667085;
+      --muted-light: #98a2b3;
+
       --border: #e5e7eb;
       --background: #f8fafc;
       --white: #ffffff;
+
       --green: #16a34a;
+      --light-green: #ecfdf3;
       --red: #dc2626;
+
+      --shadow: 0 20px 55px rgba(16, 35, 63, 0.10);
+      --shadow-small: 0 10px 30px rgba(16, 35, 63, 0.06);
     }
 
     html {
@@ -40,10 +53,18 @@
     }
 
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        Helvetica,
+        Arial,
+        sans-serif;
       color: var(--text);
       background: var(--white);
       line-height: 1.6;
+      overflow-x: hidden;
     }
 
     a {
@@ -53,36 +74,50 @@
 
     button,
     input,
-    select,
-    textarea {
+    select {
       font: inherit;
     }
 
     .container {
-      width: min(1120px, 92%);
+      width: min(1140px, 92%);
       margin: 0 auto;
     }
 
-    /* NAVIGATION */
+    /* --------------------------------------------------
+       NAVIGATION
+    -------------------------------------------------- */
 
     nav {
       position: sticky;
       top: 0;
       z-index: 100;
       background: rgba(255, 255, 255, 0.94);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(229, 231, 235, 0.85);
     }
 
     .nav-inner {
-      height: 72px;
+      height: 74px;
       display: flex;
       align-items: center;
       justify-content: space-between;
     }
 
-    .logo {
+    .brand {
       display: flex;
+      align-items: center;
+    }
+
+    .brand-logo {
+      display: block;
+      width: 150px;
+      max-height: 42px;
+      object-fit: contain;
+      object-position: left center;
+    }
+
+    .brand-fallback {
+      display: none;
       align-items: center;
       gap: 10px;
       font-size: 21px;
@@ -90,7 +125,7 @@
       color: var(--navy);
     }
 
-    .logo-mark {
+    .brand-fallback-mark {
       width: 34px;
       height: 34px;
       border-radius: 9px;
@@ -98,20 +133,24 @@
       color: white;
       display: grid;
       place-items: center;
-      font-size: 16px;
+      font-size: 15px;
       font-weight: 800;
     }
 
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 28px;
+      gap: 27px;
       font-size: 14px;
       color: #475467;
       font-weight: 500;
     }
 
-    .nav-links a:hover {
+    .nav-links a:not(.nav-cta) {
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a:not(.nav-cta):hover {
       color: var(--blue);
     }
 
@@ -120,41 +159,64 @@
       color: white !important;
       padding: 10px 17px;
       border-radius: 8px;
-      font-weight: 600;
+      font-weight: 700;
+      transition: 0.2s ease;
     }
 
     .nav-cta:hover {
       background: var(--blue-dark);
+      transform: translateY(-1px);
     }
 
-    /* HERO */
+    /* --------------------------------------------------
+       HERO
+    -------------------------------------------------- */
 
     .hero {
+      position: relative;
       background:
-        radial-gradient(circle at 85% 15%, #dbeafe 0, transparent 28%),
-        linear-gradient(180deg, #f8fbff 0%, #ffffff 100%);
-      padding: 92px 0 90px;
+        radial-gradient(circle at 82% 13%, rgba(37, 99, 235, 0.10) 0, transparent 26%),
+        radial-gradient(circle at 5% 90%, rgba(197, 138, 43, 0.06) 0, transparent 23%),
+        linear-gradient(180deg, #f9fbff 0%, #ffffff 80%);
+      padding: 95px 0 110px;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: 28%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(197, 138, 43, 0.5));
     }
 
     .hero-grid {
       display: grid;
-      grid-template-columns: 1.05fr 0.95fr;
-      gap: 65px;
+      grid-template-columns: 0.92fr 1.08fr;
+      gap: 70px;
       align-items: center;
+    }
+
+    .hero-copy {
+      position: relative;
+      z-index: 2;
+      padding-left: 4px;
     }
 
     .eyebrow {
       display: inline-flex;
       align-items: center;
-      gap: 7px;
-      padding: 6px 11px;
+      gap: 8px;
+      padding: 7px 12px;
       background: var(--light-blue);
       color: var(--blue-dark);
-      border: 1px solid #dbeafe;
+      border: 1px solid var(--blue-border);
       border-radius: 999px;
-      font-size: 13px;
-      font-weight: 700;
-      margin-bottom: 20px;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.2px;
+      margin-bottom: 21px;
     }
 
     .eyebrow-dot {
@@ -162,29 +224,46 @@
       height: 7px;
       background: var(--green);
       border-radius: 50%;
+      box-shadow: 0 0 0 4px rgba(22, 163, 74, 0.08);
     }
 
     h1 {
-      font-size: clamp(42px, 5vw, 65px);
-      line-height: 1.04;
-      letter-spacing: -2.5px;
+      font-size: clamp(43px, 5vw, 68px);
+      line-height: 1.01;
+      letter-spacing: -3.3px;
       color: var(--navy);
-      margin-bottom: 22px;
+      max-width: 680px;
+      margin-bottom: 23px;
     }
 
     .hero h1 span {
       color: var(--blue);
+      position: relative;
+    }
+
+    .hero h1 span::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -4px;
+      width: 58%;
+      height: 3px;
+      border-radius: 999px;
+      background: var(--amber);
+      opacity: 0.8;
     }
 
     .hero-text {
-      max-width: 600px;
+      max-width: 610px;
       font-size: 18px;
+      line-height: 1.7;
       color: var(--muted);
       margin-bottom: 30px;
     }
 
     .hero-buttons {
       display: flex;
+      align-items: center;
       gap: 12px;
       flex-wrap: wrap;
     }
@@ -195,9 +274,9 @@
       justify-content: center;
       padding: 13px 21px;
       border-radius: 8px;
-      font-size: 15px;
-      font-weight: 700;
-      transition: 0.2s ease;
+      font-size: 14px;
+      font-weight: 800;
+      transition: all 0.2s ease;
       cursor: pointer;
       border: none;
     }
@@ -205,11 +284,13 @@
     .btn-primary {
       background: var(--blue);
       color: white;
+      box-shadow: 0 8px 22px rgba(37, 99, 235, 0.18);
     }
 
     .btn-primary:hover {
       background: var(--blue-dark);
-      transform: translateY(-1px);
+      transform: translateY(-2px);
+      box-shadow: 0 12px 28px rgba(37, 99, 235, 0.22);
     }
 
     .btn-secondary {
@@ -220,26 +301,41 @@
 
     .btn-secondary:hover {
       border-color: #cbd5e1;
-      background: #f8fafc;
+      transform: translateY(-1px);
+      background: #fbfcfe;
     }
 
     .hero-note {
-      margin-top: 18px;
-      font-size: 13px;
-      color: #98a2b3;
+      margin-top: 16px;
+      font-size: 12px;
+      color: var(--muted-light);
     }
 
-    /* DASHBOARD */
+    /* --------------------------------------------------
+       AUDIT PREVIEW
+    -------------------------------------------------- */
 
-    .dashboard {
+    .audit-preview {
+      position: relative;
+    }
+
+    .audit-paper {
+      position: relative;
       background: white;
       border: 1px solid var(--border);
-      border-radius: 15px;
-      box-shadow: 0 20px 55px rgba(16, 35, 63, 0.12);
+      border-radius: 16px;
+      box-shadow: var(--shadow);
       overflow: hidden;
+      transform: rotate(1deg);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
-    .dashboard-top {
+    .audit-paper:hover {
+      transform: rotate(0deg) translateY(-4px);
+      box-shadow: 0 26px 65px rgba(16, 35, 63, 0.13);
+    }
+
+    .audit-paper-header {
       padding: 17px 20px;
       border-bottom: 1px solid var(--border);
       display: flex;
@@ -247,111 +343,227 @@
       align-items: center;
     }
 
-    .dashboard-title {
-      font-size: 14px;
-      font-weight: 700;
+    .audit-paper-brand {
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: 0.8px;
       color: var(--navy);
     }
 
-    .status {
-      font-size: 11px;
-      padding: 4px 8px;
+    .audit-paper-tag {
+      background: var(--light-amber);
+      border: 1px solid #f4dfb5;
+      color: #8b621e;
+      padding: 5px 9px;
       border-radius: 999px;
-      background: #ecfdf3;
-      color: var(--green);
-      font-weight: 700;
-    }
-
-    .dashboard-body {
-      padding: 20px;
-    }
-
-    .business-name {
-      font-size: 18px;
+      font-size: 9px;
       font-weight: 800;
-      margin-bottom: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
     }
 
-    .business-location {
-      color: var(--muted);
-      font-size: 12px;
-      margin-bottom: 18px;
+    .audit-paper-body {
+      padding: 22px;
     }
 
-    .metrics {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 10px;
+    .audit-company {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      align-items: flex-start;
       margin-bottom: 20px;
     }
 
-    .metric {
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 13px;
-    }
-
-    .metric-label {
-      font-size: 11px;
-      color: var(--muted);
-      margin-bottom: 3px;
-    }
-
-    .metric-value {
-      font-size: 21px;
-      font-weight: 800;
+    .audit-company-name {
+      font-size: 19px;
+      font-weight: 850;
       color: var(--navy);
     }
 
-    .metric-change {
-      font-size: 10px;
-      color: var(--green);
-      font-weight: 700;
-    }
-
-    .review {
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 13px;
-      margin-bottom: 10px;
-    }
-
-    .review-header {
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 6px;
-    }
-
-    .review-name {
-      font-size: 12px;
-      font-weight: 700;
-    }
-
-    .stars {
-      color: #f59e0b;
-      font-size: 12px;
-    }
-
-    .review-text {
+    .audit-company-location {
       font-size: 11px;
       color: var(--muted);
+      margin-top: 2px;
     }
 
-    .response {
-      margin-top: 9px;
-      padding: 8px;
-      background: #f8fafc;
-      border-radius: 7px;
+    .audit-score {
+      text-align: right;
+    }
+
+    .audit-score-number {
+      font-size: 28px;
+      line-height: 1;
+      font-weight: 900;
+      color: var(--navy);
+    }
+
+    .audit-score-label {
+      font-size: 9px;
+      color: var(--muted);
+      margin-top: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .audit-metrics {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 9px;
+      margin-bottom: 17px;
+    }
+
+    .audit-metric {
+      border: 1px solid var(--border);
+      border-radius: 9px;
+      padding: 12px;
+    }
+
+    .audit-metric-label {
+      font-size: 9px;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+      margin-bottom: 4px;
+    }
+
+    .audit-metric-value {
+      font-size: 18px;
+      font-weight: 850;
+      color: var(--navy);
+    }
+
+    .audit-metric-sub {
+      font-size: 8px;
+      color: var(--green);
+      font-weight: 800;
+      margin-top: 2px;
+    }
+
+    .audit-row {
+      display: grid;
+      grid-template-columns: 1fr 0.82fr;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    .audit-panel {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 14px;
+    }
+
+    .audit-panel-title {
+      font-size: 9px;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      color: var(--muted);
+      font-weight: 850;
+      margin-bottom: 11px;
+    }
+
+    .competitor {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 7px 0;
+      border-bottom: 1px solid #f0f2f5;
       font-size: 10px;
+    }
+
+    .competitor:last-child {
+      border-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .competitor-name {
       color: #475467;
     }
 
-    /* TRUST BAR */
+    .competitor-rating {
+      color: var(--navy);
+      font-weight: 850;
+    }
+
+    .insight {
+      background: var(--light-amber);
+      border: 1px solid #f4dfb5;
+      border-radius: 9px;
+      padding: 12px;
+    }
+
+    .insight-label {
+      font-size: 9px;
+      color: #8b621e;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      font-weight: 900;
+      margin-bottom: 6px;
+    }
+
+    .insight-title {
+      font-size: 12px;
+      color: var(--navy);
+      font-weight: 850;
+      margin-bottom: 4px;
+    }
+
+    .insight-text {
+      font-size: 9px;
+      line-height: 1.5;
+      color: #667085;
+    }
+
+    .audit-foot {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 13px;
+      border-top: 1px solid var(--border);
+      font-size: 9px;
+      color: var(--muted-light);
+    }
+
+    .audit-foot strong {
+      color: var(--blue);
+    }
+
+    .floating-note {
+      position: absolute;
+      z-index: 3;
+      right: -25px;
+      bottom: -27px;
+      width: 190px;
+      background: var(--navy);
+      color: white;
+      border-radius: 11px;
+      padding: 15px;
+      box-shadow: 0 16px 35px rgba(16, 35, 63, 0.18);
+      transform: rotate(-2deg);
+    }
+
+    .floating-note-label {
+      color: #93c5fd;
+      font-size: 9px;
+      font-weight: 850;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      margin-bottom: 5px;
+    }
+
+    .floating-note-text {
+      font-size: 11px;
+      line-height: 1.4;
+      color: #f8fafc;
+    }
+
+    /* --------------------------------------------------
+       TRUST BAR
+    -------------------------------------------------- */
 
     .trust-bar {
       border-top: 1px solid var(--border);
       border-bottom: 1px solid var(--border);
-      padding: 20px 0;
+      padding: 19px 0;
       background: white;
     }
 
@@ -359,169 +571,294 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      gap: 35px;
+      gap: 27px;
       flex-wrap: wrap;
-      color: #667085;
-      font-size: 13px;
+      color: var(--muted);
+      font-size: 12px;
     }
 
     .trust-content strong {
       color: var(--navy);
     }
 
-    /* GENERAL */
+    .separator {
+      color: #d0d5dd;
+    }
+
+    /* --------------------------------------------------
+       GENERAL SECTION
+    -------------------------------------------------- */
 
     section {
-      padding: 90px 0;
+      padding: 100px 0;
     }
 
     .section-header {
-      max-width: 690px;
-      margin: 0 auto 48px;
+      max-width: 720px;
+      margin-bottom: 55px;
+    }
+
+    .section-header.center {
+      margin-left: auto;
+      margin-right: auto;
       text-align: center;
     }
 
     .section-label {
       color: var(--blue);
-      font-size: 13px;
-      font-weight: 800;
+      font-size: 11px;
+      font-weight: 900;
       text-transform: uppercase;
-      letter-spacing: 0.8px;
-      margin-bottom: 9px;
+      letter-spacing: 1px;
+      margin-bottom: 10px;
     }
 
     h2 {
-      font-size: clamp(31px, 4vw, 43px);
-      letter-spacing: -1.5px;
-      line-height: 1.15;
+      font-size: clamp(32px, 4vw, 47px);
+      letter-spacing: -2px;
+      line-height: 1.08;
       color: var(--navy);
-      margin-bottom: 14px;
+      margin-bottom: 15px;
     }
 
     .section-description {
       color: var(--muted);
       font-size: 16px;
+      line-height: 1.7;
     }
 
-    /* PROBLEM */
+    /* --------------------------------------------------
+       PROBLEM
+    -------------------------------------------------- */
 
     .problem {
       background: var(--background);
     }
 
-    .problem-grid {
+    .problem-layout {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
+      grid-template-columns: 0.75fr 1.25fr;
+      gap: 75px;
+      align-items: start;
     }
 
-    .problem-card {
+    .problem-statement {
+      position: sticky;
+      top: 105px;
+    }
+
+    .problem-statement h2 {
+      max-width: 470px;
+    }
+
+    .problem-statement p {
+      color: var(--muted);
+      font-size: 15px;
+      max-width: 440px;
+      line-height: 1.75;
+    }
+
+    .problem-line {
+      width: 54px;
+      height: 3px;
+      border-radius: 999px;
+      background: var(--amber);
+      margin: 24px 0;
+    }
+
+    .problem-list {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .problem-item {
+      display: grid;
+      grid-template-columns: 46px 1fr;
+      gap: 17px;
+      padding: 23px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .problem-item:first-child {
+      border-top: 1px solid var(--border);
+    }
+
+    .problem-number {
+      width: 37px;
+      height: 37px;
+      border-radius: 9px;
       background: white;
       border: 1px solid var(--border);
-      padding: 27px;
-      border-radius: 12px;
-    }
-
-    .problem-icon {
-      width: 40px;
-      height: 40px;
-      border-radius: 9px;
-      background: var(--light-blue);
       display: grid;
       place-items: center;
       color: var(--blue);
-      font-size: 19px;
-      margin-bottom: 17px;
+      font-size: 11px;
+      font-weight: 900;
     }
 
-    .problem-card h3 {
-      font-size: 17px;
-      margin-bottom: 7px;
+    .problem-item h3 {
       color: var(--navy);
+      font-size: 17px;
+      margin-bottom: 5px;
     }
 
-    .problem-card p {
+    .problem-item p {
       color: var(--muted);
-      font-size: 14px;
+      font-size: 13px;
+      line-height: 1.65;
     }
 
-    /* SERVICES */
+    /* --------------------------------------------------
+       SERVICES
+    -------------------------------------------------- */
 
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
-    }
-
-    .service-card {
-      padding: 27px;
-      border: 1px solid var(--border);
-      border-radius: 12px;
+    .services {
       background: white;
+    }
+
+    .services-intro {
+      display: flex;
+      justify-content: space-between;
+      gap: 50px;
+      align-items: end;
+      margin-bottom: 50px;
+    }
+
+    .services-intro .section-header {
+      margin-bottom: 0;
+    }
+
+    .services-side-note {
+      max-width: 310px;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.7;
+      padding-bottom: 4px;
+      border-left: 2px solid var(--amber);
+      padding-left: 15px;
+    }
+
+    .service-list {
+      border-top: 1px solid var(--border);
+    }
+
+    .service-row {
+      display: grid;
+      grid-template-columns: 90px 1fr 1fr;
+      gap: 30px;
+      padding: 27px 0;
+      border-bottom: 1px solid var(--border);
+      transition: padding 0.2s ease, background 0.2s ease;
+    }
+
+    .service-row:hover {
+      padding-left: 10px;
+      padding-right: 10px;
+      background: linear-gradient(90deg, #fbfcfe, white);
     }
 
     .service-number {
       color: var(--blue);
-      font-size: 12px;
-      font-weight: 800;
-      margin-bottom: 12px;
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: 0.8px;
+      padding-top: 3px;
     }
 
-    .service-card h3 {
+    .service-row h3 {
       color: var(--navy);
-      font-size: 18px;
-      margin-bottom: 8px;
+      font-size: 19px;
+      margin-bottom: 5px;
     }
 
-    .service-card p {
-      font-size: 14px;
+    .service-row p {
       color: var(--muted);
+      font-size: 13px;
+      line-height: 1.65;
     }
 
-    /* PROCESS */
+    /* --------------------------------------------------
+       PROCESS
+    -------------------------------------------------- */
 
     .process {
       background: var(--background);
     }
 
-    .process-grid {
+    .process-layout {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 15px;
+      grid-template-columns: 0.72fr 1.28fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .process-intro {
+      position: sticky;
+      top: 105px;
+    }
+
+    .process-intro h2 {
+      max-width: 430px;
+    }
+
+    .process-intro p {
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.75;
+      max-width: 420px;
+    }
+
+    .process-timeline {
+      border-left: 1px solid #d6dce5;
+      padding-left: 33px;
     }
 
     .process-step {
-      background: white;
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 25px 20px;
+      position: relative;
+      padding: 0 0 42px;
     }
 
-    .step-number {
-      width: 31px;
-      height: 31px;
+    .process-step:last-child {
+      padding-bottom: 0;
+    }
+
+    .process-step::before {
+      content: "";
+      position: absolute;
+      left: -42px;
+      top: 4px;
+      width: 16px;
+      height: 16px;
+      background: white;
+      border: 4px solid var(--blue);
       border-radius: 50%;
-      background: var(--navy);
-      color: white;
-      display: grid;
-      place-items: center;
-      font-size: 12px;
-      font-weight: 800;
-      margin-bottom: 15px;
+    }
+
+    .step-small {
+      color: var(--amber);
+      font-size: 10px;
+      font-weight: 900;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      margin-bottom: 5px;
     }
 
     .process-step h3 {
       color: var(--navy);
-      font-size: 16px;
-      margin-bottom: 7px;
+      font-size: 20px;
+      margin-bottom: 6px;
     }
 
     .process-step p {
-      font-size: 13px;
       color: var(--muted);
+      font-size: 13px;
+      line-height: 1.7;
+      max-width: 560px;
     }
 
-    /* WHY LOCALCRED */
+    /* --------------------------------------------------
+       WHY LOCALCRED
+    -------------------------------------------------- */
 
     .why {
       background: white;
@@ -529,103 +866,125 @@
 
     .why-grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 18px;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0;
+      border-top: 1px solid var(--border);
+      border-left: 1px solid var(--border);
     }
 
     .why-card {
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 25px 20px;
-      background: white;
+      padding: 31px;
+      border-right: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      position: relative;
+    }
+
+    .why-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 38px;
+      height: 2px;
+      background: var(--amber);
+    }
+
+    .why-icon {
+      color: var(--blue);
+      font-size: 20px;
+      margin-bottom: 13px;
     }
 
     .why-card h3 {
       color: var(--navy);
-      font-size: 16px;
-      margin-bottom: 8px;
+      font-size: 18px;
+      margin-bottom: 7px;
     }
 
     .why-card p {
       color: var(--muted);
       font-size: 13px;
+      line-height: 1.7;
+      max-width: 440px;
     }
 
-    .why-icon {
-      font-size: 22px;
-      margin-bottom: 14px;
-      color: var(--blue);
-    }
+    /* --------------------------------------------------
+       PRICING
+    -------------------------------------------------- */
 
-    /* PRICING */
+    .pricing {
+      background: var(--background);
+    }
 
     .pricing-intro {
       max-width: 700px;
-      margin: -25px auto 42px;
-      text-align: center;
       color: var(--muted);
-      font-size: 14px;
+      font-size: 15px;
+      line-height: 1.7;
+      margin: -25px auto 48px;
+      text-align: center;
     }
 
     .pricing-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
+      gap: 16px;
       align-items: stretch;
     }
 
     .pricing-card {
+      background: white;
       border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 30px 25px;
+      border-radius: 13px;
+      padding: 29px 25px;
       display: flex;
       flex-direction: column;
-      background: white;
+      position: relative;
     }
 
     .pricing-card.featured {
       border: 2px solid var(--blue);
-      position: relative;
-      box-shadow: 0 10px 30px rgba(37, 99, 235, 0.10);
+      box-shadow: 0 14px 35px rgba(37, 99, 235, 0.10);
+      transform: translateY(-7px);
     }
 
     .popular {
       position: absolute;
-      top: -13px;
-      left: 50%;
-      transform: translateX(-50%);
+      top: -12px;
+      left: 23px;
       background: var(--blue);
       color: white;
-      font-size: 11px;
-      padding: 5px 11px;
+      padding: 5px 10px;
       border-radius: 999px;
-      font-weight: 800;
-      white-space: nowrap;
+      font-size: 9px;
+      font-weight: 900;
+      letter-spacing: 0.5px;
     }
 
     .pricing-name {
       color: var(--navy);
-      font-weight: 800;
+      font-weight: 900;
       font-size: 19px;
-      margin-bottom: 6px;
+      margin-bottom: 5px;
     }
 
     .pricing-description {
       color: var(--muted);
-      font-size: 13px;
-      min-height: 40px;
+      font-size: 12px;
+      min-height: 41px;
+      line-height: 1.55;
     }
 
     .price {
-      margin: 20px 0;
-      font-size: 35px;
       color: var(--navy);
-      font-weight: 850;
-      letter-spacing: -1px;
+      font-size: 34px;
+      font-weight: 900;
+      letter-spacing: -1.2px;
+      margin: 19px 0;
     }
 
     .price span {
-      font-size: 13px;
+      font-size: 12px;
       color: var(--muted);
       font-weight: 500;
       letter-spacing: 0;
@@ -633,16 +992,17 @@
 
     .features {
       list-style: none;
-      margin-bottom: 25px;
+      margin-bottom: 24px;
       flex: 1;
     }
 
     .features li {
-      font-size: 13px;
       color: #475467;
+      font-size: 12px;
       margin-bottom: 10px;
-      padding-left: 20px;
+      padding-left: 19px;
       position: relative;
+      line-height: 1.45;
     }
 
     .features li::before {
@@ -650,7 +1010,7 @@
       position: absolute;
       left: 0;
       color: var(--green);
-      font-weight: 800;
+      font-weight: 900;
     }
 
     .pricing-button {
@@ -659,144 +1019,182 @@
 
     .pricing-note {
       text-align: center;
-      margin-top: 28px;
-      color: #98a2b3;
-      font-size: 13px;
+      color: var(--muted-light);
+      font-size: 12px;
+      margin-top: 27px;
     }
 
-    /* SCALPEL */
+    /* --------------------------------------------------
+       SCALPEL
+    -------------------------------------------------- */
 
     .scalpel {
-      background: #f8fafc;
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
+      background: var(--navy-deep);
+      color: white;
+      padding: 75px 0;
     }
 
-    .scalpel-grid {
+    .scalpel-layout {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 0.82fr 1.18fr;
       gap: 60px;
       align-items: center;
     }
 
-    .scalpel h2 {
-      color: var(--navy);
-    }
-
-    .scalpel p {
-      color: var(--muted);
-      font-size: 16px;
-      margin-bottom: 20px;
-    }
-
     .scalpel .section-label {
-      color: var(--blue);
+      color: #93c5fd;
     }
 
-    .scalpel-list {
-      list-style: none;
+    .scalpel h2 {
+      color: white;
+      margin-bottom: 13px;
     }
 
-    .scalpel-list li {
-      color: #475467;
+    .scalpel-copy > p {
+      color: #cbd5e1;
       font-size: 14px;
-      margin-bottom: 11px;
+      line-height: 1.7;
+      max-width: 480px;
     }
 
-    .scalpel-list li::before {
+    .scalpel-points {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px 20px;
+      margin-top: 25px;
+    }
+
+    .scalpel-point {
+      color: #e2e8f0;
+      font-size: 12px;
+    }
+
+    .scalpel-point::before {
       content: "✓";
-      margin-right: 9px;
-      color: var(--blue);
-      font-weight: bold;
+      color: #60a5fa;
+      font-weight: 900;
+      margin-right: 8px;
     }
 
     .scalpel-box {
-      background: white;
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 30px;
-      box-shadow: 0 10px 30px rgba(16, 35, 63, 0.05);
+      background: rgba(255, 255, 255, 0.045);
+      border: 1px solid rgba(255, 255, 255, 0.11);
+      border-radius: 13px;
+      padding: 28px;
     }
 
     .scalpel-price {
       font-size: 29px;
-      color: var(--navy);
-      font-weight: 800;
-      margin-bottom: 8px;
+      font-weight: 900;
+      margin-bottom: 7px;
     }
 
     .scalpel-box p {
-      font-size: 13px;
-      margin-bottom: 0;
+      color: #cbd5e1;
+      font-size: 12px;
+      line-height: 1.65;
     }
 
     .scalpel-note {
-      color: #98a2b3;
-      font-size: 12px;
-      margin-top: 14px;
+      margin-top: 15px;
+      color: #94a3b8;
+      font-size: 10px;
+      line-height: 1.55;
     }
 
-    /* INDUSTRIES */
+    /* --------------------------------------------------
+       INDUSTRIES
+    -------------------------------------------------- */
 
     .industries {
-      background: var(--background);
+      background: white;
+    }
+
+    .industry-wrap {
+      display: grid;
+      grid-template-columns: 0.8fr 1.2fr;
+      gap: 65px;
+      align-items: center;
+    }
+
+    .industry-wrap h2 {
+      max-width: 480px;
+    }
+
+    .industry-wrap p {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.7;
+      max-width: 470px;
     }
 
     .industry-grid {
       display: flex;
-      justify-content: center;
-      gap: 10px;
       flex-wrap: wrap;
-      max-width: 800px;
-      margin: auto;
+      gap: 9px;
+      align-content: start;
     }
 
     .industry {
-      background: white;
+      padding: 10px 15px;
+      background: var(--background);
       border: 1px solid var(--border);
-      padding: 10px 16px;
       border-radius: 999px;
       color: #475467;
-      font-size: 13px;
-      font-weight: 600;
+      font-size: 12px;
+      font-weight: 700;
+      transition: all 0.2s ease;
     }
 
-    /* AUDIT */
+    .industry:hover {
+      border-color: #cbd5e1;
+      transform: translateY(-1px);
+    }
+
+    /* --------------------------------------------------
+       AUDIT
+    -------------------------------------------------- */
 
     .audit-section {
-      background: #f1f6ff;
-      border-top: 1px solid #dbeafe;
+      background:
+        radial-gradient(circle at 15% 15%, rgba(37, 99, 235, 0.07) 0, transparent 25%),
+        #f3f7ff;
+      border-top: 1px solid var(--blue-border);
     }
 
     .audit-layout {
       display: grid;
-      grid-template-columns: 0.9fr 1.1fr;
-      gap: 55px;
+      grid-template-columns: 0.88fr 1.12fr;
+      gap: 65px;
       align-items: start;
     }
 
+    .audit-copy {
+      padding-top: 10px;
+    }
+
     .audit-copy h2 {
-      max-width: 600px;
+      max-width: 590px;
     }
 
     .audit-copy > p {
       color: var(--muted);
-      font-size: 16px;
-      margin-bottom: 25px;
-      max-width: 560px;
+      font-size: 15px;
+      line-height: 1.75;
+      max-width: 550px;
     }
 
     .audit-points {
       list-style: none;
-      margin-top: 20px;
+      margin-top: 25px;
     }
 
     .audit-points li {
       position: relative;
-      padding-left: 25px;
+      padding-left: 24px;
       margin-bottom: 13px;
       color: #475467;
-      font-size: 14px;
+      font-size: 13px;
     }
 
     .audit-points li::before {
@@ -804,54 +1202,53 @@
       position: absolute;
       left: 0;
       color: var(--green);
-      font-weight: 800;
+      font-weight: 900;
     }
 
     .audit-expectation {
-      background: white;
-      border: 1px solid #dbeafe;
-      border-radius: 10px;
-      padding: 17px;
-      margin-top: 25px;
-      max-width: 560px;
+      margin-top: 27px;
+      border-left: 3px solid var(--amber);
+      padding: 12px 0 12px 16px;
+      max-width: 520px;
     }
 
     .audit-expectation strong {
       color: var(--navy);
-      font-size: 13px;
       display: block;
-      margin-bottom: 5px;
+      font-size: 12px;
+      margin-bottom: 3px;
     }
 
     .audit-expectation span {
       color: var(--muted);
-      font-size: 13px;
+      font-size: 12px;
+      line-height: 1.6;
     }
 
     .audit-note {
-      margin-top: 18px;
-      font-size: 13px;
-      color: #98a2b3;
+      margin-top: 17px;
+      color: var(--muted-light);
+      font-size: 11px;
     }
 
     .audit-form-wrap {
       background: white;
       border: 1px solid var(--border);
       border-radius: 15px;
-      padding: 30px;
-      box-shadow: 0 14px 40px rgba(16, 35, 63, 0.08);
+      padding: 31px;
+      box-shadow: 0 18px 45px rgba(16, 35, 63, 0.08);
     }
 
     .audit-form-title {
-      font-size: 21px;
-      font-weight: 800;
       color: var(--navy);
+      font-size: 22px;
+      font-weight: 900;
       margin-bottom: 5px;
     }
 
     .audit-form-subtitle {
       color: var(--muted);
-      font-size: 13px;
+      font-size: 12px;
       margin-bottom: 24px;
     }
 
@@ -872,9 +1269,18 @@
     }
 
     .form-group label {
-      font-size: 12px;
-      font-weight: 700;
       color: var(--navy);
+      font-size: 11px;
+      font-weight: 800;
+    }
+
+    .optional {
+      color: var(--muted-light);
+      font-weight: 500;
+    }
+
+    .required {
+      color: var(--red);
     }
 
     .form-group input,
@@ -886,76 +1292,88 @@
       color: var(--text);
       background: white;
       outline: none;
-      transition: 0.2s ease;
-      font-size: 13px;
+      font-size: 12px;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
     }
 
     .form-group input:focus,
     .form-group select:focus {
       border-color: var(--blue);
-      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.09);
-    }
-
-    .required {
-      color: var(--red);
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.08);
     }
 
     .form-submit {
-      margin-top: 20px;
       width: 100%;
+      margin-top: 20px;
     }
 
     .form-disclaimer {
       text-align: center;
-      color: #98a2b3;
-      font-size: 11px;
-      margin-top: 11px;
+      color: var(--muted-light);
+      font-size: 10px;
+      margin-top: 10px;
       line-height: 1.5;
     }
 
     .success-message {
       display: none;
-      margin-top: 15px;
-      padding: 12px;
-      background: #ecfdf3;
+      background: var(--light-green);
       color: #166534;
       border-radius: 8px;
-      font-size: 13px;
+      padding: 12px;
+      font-size: 12px;
       text-align: center;
+      margin-top: 15px;
     }
 
-    /* FAQ */
+    /* --------------------------------------------------
+       FAQ
+    -------------------------------------------------- */
+
+    .faq-section {
+      background: white;
+    }
 
     .faq {
-      max-width: 780px;
-      margin: auto;
+      max-width: 800px;
+      margin: 0 auto;
     }
 
     .faq-item {
       border-bottom: 1px solid var(--border);
     }
 
+    .faq-item:first-child {
+      border-top: 1px solid var(--border);
+    }
+
     .faq-question {
+      width: 100%;
+      background: none;
+      border: none;
       padding: 21px 0;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      text-align: left;
       cursor: pointer;
-      font-size: 15px;
-      font-weight: 700;
       color: var(--navy);
+      font-size: 14px;
+      font-weight: 800;
     }
 
     .faq-question span {
-      font-size: 20px;
       color: var(--muted);
-      transition: transform 0.2s;
+      font-size: 20px;
+      font-weight: 400;
+      transition: transform 0.2s ease;
     }
 
     .faq-answer {
       display: none;
       color: var(--muted);
-      font-size: 14px;
+      font-size: 13px;
+      line-height: 1.7;
       padding: 0 35px 20px 0;
     }
 
@@ -967,84 +1385,125 @@
       transform: rotate(45deg);
     }
 
-    /* FINAL CTA */
+    /* --------------------------------------------------
+       FINAL CTA
+    -------------------------------------------------- */
 
     .final-cta {
-      background: var(--navy);
+      background:
+        radial-gradient(circle at 50% 15%, rgba(37, 99, 235, 0.18), transparent 30%),
+        var(--navy-deep);
       color: white;
       text-align: center;
+      padding: 100px 0;
     }
 
     .final-cta .section-label {
-      color: #60a5fa;
+      color: #93c5fd;
     }
 
     .final-cta h2 {
       color: white;
       max-width: 760px;
-      margin-left: auto;
-      margin-right: auto;
+      margin: 0 auto 15px;
     }
 
     .final-cta p {
-      max-width: 600px;
-      margin: 0 auto 26px;
       color: #cbd5e1;
-      font-size: 16px;
+      max-width: 610px;
+      margin: 0 auto 27px;
+      font-size: 15px;
+      line-height: 1.7;
     }
 
     .final-cta .btn-secondary {
-      background: transparent;
       color: white;
-      border-color: rgba(255, 255, 255, 0.25);
+      background: transparent;
+      border-color: rgba(255, 255, 255, 0.22);
     }
 
     .final-cta .btn-secondary:hover {
-      background: rgba(255, 255, 255, 0.06);
+      background: rgba(255, 255, 255, 0.05);
     }
 
-    /* FOOTER */
+    /* --------------------------------------------------
+       FOOTER
+    -------------------------------------------------- */
 
     footer {
       background: white;
       border-top: 1px solid var(--border);
-      padding: 28px 0;
+      padding: 27px 0;
     }
 
     .footer-inner {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      gap: 20px;
+      gap: 25px;
+    }
+
+    .footer-brand {
+      color: var(--navy);
+      font-size: 14px;
+      font-weight: 900;
     }
 
     .footer-copy {
-      color: #98a2b3;
-      font-size: 12px;
+      color: var(--muted-light);
+      font-size: 10px;
+      margin-top: 2px;
     }
 
     .footer-links {
       display: flex;
       gap: 20px;
-      color: #667085;
-      font-size: 12px;
+      color: var(--muted);
+      font-size: 11px;
     }
 
     .footer-links a:hover {
       color: var(--blue);
     }
 
-    /* MOBILE */
+    /* --------------------------------------------------
+       MOBILE
+    -------------------------------------------------- */
 
-    @media (max-width: 950px) {
+    @media (max-width: 1000px) {
 
-      .why-grid {
-        grid-template-columns: 1fr 1fr;
+      .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 55px;
+      }
+
+      .hero-copy {
+        max-width: 720px;
+      }
+
+      .problem-layout,
+      .process-layout,
+      .industry-wrap {
+        grid-template-columns: 1fr;
+        gap: 45px;
+      }
+
+      .problem-statement,
+      .process-intro {
+        position: static;
+      }
+
+      .services-intro {
+        display: block;
+      }
+
+      .services-side-note {
+        margin-top: 25px;
       }
 
       .audit-layout {
         grid-template-columns: 1fr;
-        gap: 35px;
+        gap: 40px;
       }
 
     }
@@ -1055,77 +1514,97 @@
         display: none;
       }
 
+      .nav-links {
+        gap: 10px;
+      }
+
       .hero {
-        padding: 65px 0;
+        padding: 70px 0 80px;
       }
 
-      .hero-grid,
-      .scalpel-grid {
-        grid-template-columns: 1fr;
-        gap: 45px;
-      }
-
-      .problem-grid,
-      .services-grid {
-        grid-template-columns: 1fr 1fr;
-      }
-
-      .process-grid {
-        grid-template-columns: 1fr 1fr;
+      section {
+        padding: 75px 0;
       }
 
       .pricing-grid {
         grid-template-columns: 1fr;
-        max-width: 500px;
-        margin: auto;
+        max-width: 520px;
+        margin: 0 auto;
       }
 
       .pricing-card.featured {
+        transform: none;
         order: -1;
+      }
+
+      .service-row {
+        grid-template-columns: 65px 1fr;
+        gap: 20px;
+      }
+
+      .service-row p {
+        grid-column: 2;
+      }
+
+      .scalpel-layout {
+        grid-template-columns: 1fr;
       }
 
     }
 
-    @media (max-width: 560px) {
+    @media (max-width: 600px) {
+
+      .container {
+        width: min(94%, 1140px);
+      }
+
+      .brand-logo {
+        width: 125px;
+      }
 
       h1 {
-        letter-spacing: -1.7px;
+        font-size: 43px;
+        letter-spacing: -2.2px;
       }
 
-      section {
-        padding: 65px 0;
-      }
-
-      .problem-grid,
-      .services-grid,
-      .process-grid,
-      .why-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .metrics {
-        grid-template-columns: 1fr 1fr 1fr;
-      }
-
-      .metric {
-        padding: 9px;
-      }
-
-      .metric-value {
-        font-size: 17px;
-      }
-
-      .footer-inner {
-        flex-direction: column;
-        text-align: center;
+      h2 {
+        letter-spacing: -1.3px;
       }
 
       .hero-buttons {
         flex-direction: column;
+        align-items: stretch;
       }
 
       .hero-buttons .btn {
         width: 100%;
+      }
+
+      .audit-paper {
+        transform: none;
+      }
+
+      .floating-note {
+        position: static;
+        width: auto;
+        margin-top: 13px;
+        transform: none;
+      }
+
+      .audit-row {
+        grid-template-columns: 1fr;
+      }
+
+      .audit-metrics {
+        gap: 6px;
+      }
+
+      .audit-metric {
+        padding: 9px;
+      }
+
+      .audit-metric-value {
+        font-size: 16px;
       }
 
       .form-grid {
@@ -1138,6 +1617,36 @@
 
       .audit-form-wrap {
         padding: 22px;
+      }
+
+      .why-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .scalpel-points {
+        grid-template-columns: 1fr;
+      }
+
+      .trust-content {
+        gap: 14px 19px;
+      }
+
+      .separator {
+        display: none;
+      }
+
+      .footer-inner {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .footer-links {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .industry-wrap {
+        gap: 30px;
       }
 
     }
@@ -1153,13 +1662,24 @@
 
     <div class="container nav-inner">
 
-      <a href="#" class="logo">
+      <a href="#" class="brand">
 
-        <div class="logo-mark">
-          LC
+        <img
+          src="./logo.svg"
+          alt="LocalCred"
+          class="brand-logo"
+          onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+        >
+
+        <div class="brand-fallback">
+
+          <div class="brand-fallback-mark">
+            LC
+          </div>
+
+          LocalCred
+
         </div>
-
-        LocalCred
 
       </a>
 
@@ -1182,8 +1702,11 @@
           FAQ
         </a>
 
-        <a href="#audit" class="nav-cta">
-          Get a Reputation Audit
+        <a
+          href="#audit"
+          class="nav-cta"
+        >
+          Get Your Free Audit
         </a>
 
       </div>
@@ -1200,30 +1723,31 @@
     <div class="container hero-grid">
 
 
-      <div>
+      <div class="hero-copy">
+
 
         <div class="eyebrow">
 
           <span class="eyebrow-dot"></span>
 
-          Built for local businesses
+          Reputation intelligence for local businesses
 
         </div>
 
 
         <h1>
 
-          Turn your reputation into a
-          <span>competitive advantage.</span>
+          Know what customers see.
+          <span>Know where you stand.</span>
 
         </h1>
 
 
         <p class="hero-text">
 
-          LocalCred helps high-consideration local businesses systematically
-          improve, monitor, and manage their online reputation—so customers
-          have more reasons to choose them.
+          LocalCred helps high-consideration local businesses monitor
+          reviews, understand customer feedback, track competitors, and
+          build a stronger reputation over time.
 
         </p>
 
@@ -1234,7 +1758,7 @@
             href="#audit"
             class="btn btn-primary"
           >
-            Get Your Free Reputation Audit
+            Get Your Free Reputation Audit →
           </a>
 
 
@@ -1254,184 +1778,254 @@
 
         </p>
 
+
       </div>
 
 
-      <!-- REPUTATION INTELLIGENCE DASHBOARD -->
+      <!-- AUDIT PREVIEW -->
 
-      <div class="dashboard">
+      <div class="audit-preview">
 
 
-        <div class="dashboard-top">
+        <div class="audit-paper">
 
-          <div class="dashboard-title">
 
-            Reputation Intelligence
+          <div class="audit-paper-header">
+
+            <div class="audit-paper-brand">
+              LOCALCRED
+            </div>
+
+            <div class="audit-paper-tag">
+              Sample Audit
+            </div>
 
           </div>
 
 
-          <div class="status">
+          <div class="audit-paper-body">
 
-            Monitoring Active
+
+            <div class="audit-company">
+
+
+              <div>
+
+                <div class="audit-company-name">
+                  Apex Home Services
+                </div>
+
+                <div class="audit-company-location">
+                  Houston, TX · Home Services
+                </div>
+
+              </div>
+
+
+              <div class="audit-score">
+
+                <div class="audit-score-number">
+                  4.8
+                </div>
+
+                <div class="audit-score-label">
+                  Google Rating
+                </div>
+
+              </div>
+
+
+            </div>
+
+
+            <div class="audit-metrics">
+
+
+              <div class="audit-metric">
+
+                <div class="audit-metric-label">
+                  Reviews
+                </div>
+
+                <div class="audit-metric-value">
+                  527
+                </div>
+
+                <div class="audit-metric-sub">
+                  +34 this month
+                </div>
+
+              </div>
+
+
+              <div class="audit-metric">
+
+                <div class="audit-metric-label">
+                  Response
+                </div>
+
+                <div class="audit-metric-value">
+                  98%
+                </div>
+
+                <div class="audit-metric-sub">
+                  +12% this month
+                </div>
+
+              </div>
+
+
+              <div class="audit-metric">
+
+                <div class="audit-metric-label">
+                  Velocity
+                </div>
+
+                <div class="audit-metric-value">
+                  +34
+                </div>
+
+                <div class="audit-metric-sub">
+                  Last 30 days
+                </div>
+
+              </div>
+
+
+            </div>
+
+
+            <div class="audit-row">
+
+
+              <div class="audit-panel">
+
+                <div class="audit-panel-title">
+                  Competitor Snapshot
+                </div>
+
+
+                <div class="competitor">
+
+                  <span class="competitor-name">
+                    Apex Home Services
+                  </span>
+
+                  <span class="competitor-rating">
+                    4.8 ★
+                  </span>
+
+                </div>
+
+
+                <div class="competitor">
+
+                  <span class="competitor-name">
+                    Competitor A
+                  </span>
+
+                  <span class="competitor-rating">
+                    4.9 ★
+                  </span>
+
+                </div>
+
+
+                <div class="competitor">
+
+                  <span class="competitor-name">
+                    Competitor B
+                  </span>
+
+                  <span class="competitor-rating">
+                    4.7 ★
+                  </span>
+
+                </div>
+
+
+                <div class="competitor">
+
+                  <span class="competitor-name">
+                    Competitor C
+                  </span>
+
+                  <span class="competitor-rating">
+                    4.6 ★
+                  </span>
+
+                </div>
+
+              </div>
+
+
+              <div class="audit-panel">
+
+                <div class="audit-panel-title">
+                  Biggest Opportunity
+                </div>
+
+
+                <div class="insight">
+
+                  <div class="insight-label">
+                    Insight
+                  </div>
+
+                  <div class="insight-title">
+                    Scheduling
+                  </div>
+
+                  <div class="insight-text">
+
+                    Mentioned repeatedly in recent reviews.
+                    Worth investigating operationally.
+
+                  </div>
+
+                </div>
+
+              </div>
+
+
+            </div>
+
+
+            <div class="audit-foot">
+
+              <span>
+                Reputation snapshot
+              </span>
+
+              <strong>
+                LocalCred Audit
+              </strong>
+
+            </div>
+
 
           </div>
 
         </div>
 
 
-        <div class="dashboard-body">
+        <div class="floating-note">
 
-
-          <div class="business-name">
-
-            Apex Home Services
-
+          <div class="floating-note-label">
+            What this shows
           </div>
 
+          <div class="floating-note-text">
 
-          <div class="business-location">
-
-            Houston, TX · Google Business Profile
-
-          </div>
-
-
-          <div class="metrics">
-
-
-            <div class="metric">
-
-              <div class="metric-label">
-                Rating
-              </div>
-
-              <div class="metric-value">
-                4.8 ★
-              </div>
-
-              <div class="metric-change">
-                +0.2 this quarter
-              </div>
-
-            </div>
-
-
-            <div class="metric">
-
-              <div class="metric-label">
-                Reviews
-              </div>
-
-              <div class="metric-value">
-                527
-              </div>
-
-              <div class="metric-change">
-                +34 this month
-              </div>
-
-            </div>
-
-
-            <div class="metric">
-
-              <div class="metric-label">
-                Response
-              </div>
-
-              <div class="metric-value">
-                98%
-              </div>
-
-              <div class="metric-change">
-                +12% this month
-              </div>
-
-            </div>
-
+            Your reputation isn't just a star rating. It's the
+            combination of customer feedback, activity, and competition.
 
           </div>
-
-
-          <div class="review">
-
-
-            <div class="review-header">
-
-              <div class="review-name">
-                Sarah M.
-              </div>
-
-              <div class="stars">
-                ★★★★★
-              </div>
-
-            </div>
-
-
-            <div class="review-text">
-
-              "The technician arrived on time and explained everything..."
-
-            </div>
-
-
-            <div class="response">
-
-              <strong>
-                Response drafted:
-              </strong>
-
-              Thank you, Sarah. We're glad our team could help...
-
-            </div>
-
-
-          </div>
-
-
-          <div class="review">
-
-
-            <div class="review-header">
-
-              <div class="review-name">
-                Michael R.
-              </div>
-
-              <div class="stars">
-                ★★★☆☆
-              </div>
-
-            </div>
-
-
-            <div class="review-text">
-
-              "Good work, but scheduling could have been easier..."
-
-            </div>
-
-
-            <div class="response">
-
-              <strong>
-                Insight detected:
-              </strong>
-
-              Scheduling mentioned 5× this month.
-
-            </div>
-
-
-          </div>
-
 
         </div>
 
-      </div>
 
+      </div>
 
     </div>
 
@@ -1444,41 +2038,33 @@
 
     <div class="container trust-content">
 
-
       <span>
-        <strong>Monitor</strong> your reputation
+        <strong>Monitor</strong> reviews
       </span>
 
-
-      <span>
-        •
+      <span class="separator">
+        /
       </span>
-
 
       <span>
         <strong>Respond</strong> consistently
       </span>
 
-
-      <span>
-        •
+      <span class="separator">
+        /
       </span>
-
 
       <span>
         <strong>Generate</strong> genuine feedback
       </span>
 
-
-      <span>
-        •
+      <span class="separator">
+        /
       </span>
 
-
       <span>
-        <strong>Understand</strong> your customers
+        <strong>Understand</strong> customer patterns
       </span>
-
 
     </div>
 
@@ -1489,105 +2075,104 @@
 
   <section class="problem">
 
-    <div class="container">
+    <div class="container problem-layout">
 
 
-      <div class="section-header">
-
+      <div class="problem-statement">
 
         <div class="section-label">
-          Why reputation matters
+          The problem
         </div>
 
-
         <h2>
-          Your reviews are part of your sales process.
+          Your reputation is being evaluated before you ever speak to the customer.
         </h2>
 
+        <div class="problem-line"></div>
 
-        <p class="section-description">
+        <p>
 
-          When customers are comparing local businesses, your reputation
-          can be one of the first things they see—and one of the biggest
-          factors influencing who they contact.
+          A potential customer can compare your business with several
+          nearby competitors before they ever call, click, or walk through
+          your door.
 
         </p>
-
 
       </div>
 
 
-      <div class="problem-grid">
+      <div class="problem-list">
 
 
-        <div class="problem-card">
+        <div class="problem-item">
 
-
-          <div class="problem-icon">
-            ★
+          <div class="problem-number">
+            01
           </div>
 
+          <div>
 
-          <h3>
-            Customers compare you
-          </h3>
+            <h3>
+              Customers compare businesses side by side.
+            </h3>
 
+            <p>
 
-          <p>
+              Rating, review count, recent feedback, and response activity
+              all form part of the picture customers see.
 
-            Prospects can quickly compare your rating, review count,
-            recent feedback, and responses against nearby competitors.
+            </p>
 
-          </p>
-
+          </div>
 
         </div>
 
 
-        <div class="problem-card">
+        <div class="problem-item">
 
-
-          <div class="problem-icon">
-            ↗
+          <div class="problem-number">
+            02
           </div>
 
+          <div>
 
-          <h3>
-            Every review adds context
-          </h3>
+            <h3>
+              A high rating doesn't tell the whole story.
+            </h3>
 
+            <p>
 
-          <p>
+              Recurring complaints, outdated reviews, and unanswered
+              feedback can reveal opportunities that a star rating alone
+              won't show.
 
-            Positive reviews build confidence, while recurring complaints
-            can reveal problems that deserve your attention.
+            </p>
 
-          </p>
-
+          </div>
 
         </div>
 
 
-        <div class="problem-card">
+        <div class="problem-item">
 
-
-          <div class="problem-icon">
-            ◎
+          <div class="problem-number">
+            03
           </div>
 
+          <div>
 
-          <h3>
-            Reputation needs consistency
-          </h3>
+            <h3>
+              Reputation management can't be a one-time task.
+            </h3>
 
+            <p>
 
-          <p>
+              New reviews appear continuously. The businesses that manage
+              reputation well treat it as an ongoing process.
 
-            Asking for feedback once isn't a system. LocalCred helps make
-            reputation management an ongoing process.
+            </p>
 
-          </p>
-
+          </div>
 
         </div>
 
@@ -1601,154 +2186,214 @@
 
   <!-- SERVICES -->
 
-  <section id="services">
+  <section class="services" id="services">
 
     <div class="container">
 
 
-      <div class="section-header">
+      <div class="services-intro">
 
 
-        <div class="section-label">
-          What we manage
+        <div class="section-header">
+
+          <div class="section-label">
+            What we manage
+          </div>
+
+          <h2>
+            More than review replies.
+          </h2>
+
+          <p class="section-description">
+
+            LocalCred combines review management with the analysis and
+            competitive context businesses need to understand what's
+            actually happening.
+
+          </p>
+
         </div>
 
 
-        <h2>
-          A complete reputation system.
-        </h2>
+        <div class="services-side-note">
 
+          The goal is not to make your reputation look better on paper.
+          It's to build a system around genuine customer feedback and
+          useful information.
 
-        <p class="section-description">
-
-          We don't just reply to reviews. We help you understand what
-          customers are saying and turn that information into action.
-
-        </p>
+        </div>
 
 
       </div>
 
 
-      <div class="services-grid">
+      <div class="service-list">
 
 
-        <div class="service-card">
+        <div class="service-row">
 
           <div class="service-number">
             01
           </div>
 
-          <h3>
-            Review Monitoring
-          </h3>
+          <div>
 
-          <p>
+            <h3>
+              Review Monitoring
+            </h3>
 
-            Monitor Google, Yelp, Facebook, and relevant industry platforms
-            for new reviews and reputation changes.
+          </div>
 
-          </p>
+          <div>
+
+            <p>
+
+              Monitor Google, Yelp, Facebook, and relevant industry
+              platforms for new reviews and important reputation changes.
+
+            </p>
+
+          </div>
 
         </div>
 
 
-        <div class="service-card">
+        <div class="service-row">
 
           <div class="service-number">
             02
           </div>
 
-          <h3>
-            Review Responses
-          </h3>
+          <div>
 
-          <p>
+            <h3>
+              Review Responses
+            </h3>
 
-            Thoughtful responses to positive, neutral, and legitimate
-            negative reviews that reflect your brand.
+          </div>
 
-          </p>
+          <div>
+
+            <p>
+
+              Thoughtful responses to positive, neutral, and legitimate
+              negative reviews that fit your business's voice.
+
+            </p>
+
+          </div>
 
         </div>
 
 
-        <div class="service-card">
+        <div class="service-row">
 
           <div class="service-number">
             03
           </div>
 
-          <h3>
-            Review Generation
-          </h3>
+          <div>
 
-          <p>
+            <h3>
+              Review Generation
+            </h3>
 
-            Help your team systematically request genuine customer
-            feedback through SMS, email, links, and QR codes.
+          </div>
 
-          </p>
+          <div>
+
+            <p>
+
+              Build repeatable systems for requesting genuine customer
+              feedback through links, QR codes, SMS, and email.
+
+            </p>
+
+          </div>
 
         </div>
 
 
-        <div class="service-card">
+        <div class="service-row">
 
           <div class="service-number">
             04
           </div>
 
-          <h3>
-            Reputation Analytics
-          </h3>
+          <div>
 
-          <p>
+            <h3>
+              Reputation Analytics
+            </h3>
 
-            Track rating, review volume, response rate, review velocity,
-            sentiment, and recurring customer concerns.
+          </div>
 
-          </p>
+          <div>
+
+            <p>
+
+              Track rating, review volume, review velocity, response
+              performance, sentiment, and recurring customer concerns.
+
+            </p>
+
+          </div>
 
         </div>
 
 
-        <div class="service-card">
+        <div class="service-row">
 
           <div class="service-number">
             05
           </div>
 
-          <h3>
-            Competitor Intelligence
-          </h3>
+          <div>
 
-          <p>
+            <h3>
+              Competitor Intelligence
+            </h3>
 
-            Keep an eye on nearby competitors and understand how your
-            reputation compares within your market.
+          </div>
 
-          </p>
+          <div>
+
+            <p>
+
+              Track nearby competitors and understand where your review
+              profile is strong, weak, or changing.
+
+            </p>
+
+          </div>
 
         </div>
 
 
-        <div class="service-card">
+        <div class="service-row">
 
           <div class="service-number">
             06
           </div>
 
-          <h3>
-            Reputation Insights
-          </h3>
+          <div>
 
-          <p>
+            <h3>
+              Reputation Insights
+            </h3>
 
-            Identify patterns in customer feedback so you can spot
-            operational issues before they become bigger problems.
+          </div>
 
-          </p>
+          <div>
+
+            <p>
+
+              Identify recurring patterns in customer feedback that may
+              point to operational issues or opportunities.
+
+            </p>
+
+          </div>
 
         </div>
 
@@ -1762,98 +2407,83 @@
 
   <!-- PROCESS -->
 
-  <section id="process" class="process">
+  <section class="process" id="process">
 
-    <div class="container">
+    <div class="container process-layout">
 
 
-      <div class="section-header">
-
+      <div class="process-intro">
 
         <div class="section-label">
           How it works
         </div>
 
-
         <h2>
-          First, we show you what's happening.
+          Start with information. Then decide what to do.
         </h2>
 
+        <p>
 
-        <p class="section-description">
-
-          We start with your reputation audit, then recommend the level of
-          support that actually makes sense for your business.
+          You don't have to commit to a monthly service just to find out
+          what is happening with your reputation.
 
         </p>
-
 
       </div>
 
 
-      <div class="process-grid">
+      <div class="process-timeline">
 
 
         <div class="process-step">
 
-
-          <div class="step-number">
-            1
+          <div class="step-small">
+            Step 01
           </div>
-
 
           <h3>
             Audit
           </h3>
 
-
           <p>
 
-            We establish a baseline of your current reputation, recent
-            activity, and position relative to nearby competitors.
+            We establish a baseline of your current rating, review activity,
+            response performance, customer feedback, and competitive position.
 
           </p>
-
 
         </div>
 
 
         <div class="process-step">
 
-
-          <div class="step-number">
-            2
+          <div class="step-small">
+            Step 02
           </div>
-
 
           <h3>
             Recommend
           </h3>
 
-
           <p>
 
             We show you what we found and recommend the level of support
-            that best fits your business.
+            that makes sense based on your situation.
 
           </p>
-
 
         </div>
 
 
         <div class="process-step">
 
-
-          <div class="step-number">
-            3
+          <div class="step-small">
+            Step 03
           </div>
-
 
           <h3>
             Manage
           </h3>
-
 
           <p>
 
@@ -1862,30 +2492,25 @@
 
           </p>
 
-
         </div>
 
 
         <div class="process-step">
 
-
-          <div class="step-number">
-            4
+          <div class="step-small">
+            Step 04
           </div>
-
 
           <h3>
             Improve
           </h3>
 
-
           <p>
 
-            Monthly reporting highlights customer trends, competitors,
-            and opportunities worth acting on.
+            Ongoing reporting helps identify changes, customer patterns,
+            competitor movement, and opportunities worth acting on.
 
           </p>
-
 
         </div>
 
@@ -1904,26 +2529,22 @@
     <div class="container">
 
 
-      <div class="section-header">
-
+      <div class="section-header center">
 
         <div class="section-label">
           Why LocalCred
         </div>
 
-
         <h2>
-          Reputation management without the usual gimmicks.
+          A better reputation starts with better information.
         </h2>
-
 
         <p class="section-description">
 
-          Our goal isn't to manipulate your reputation. It's to build a
-          repeatable system around genuine customer feedback.
+          LocalCred focuses on genuine feedback, consistent management,
+          and useful intelligence instead of reputation gimmicks.
 
         </p>
-
 
       </div>
 
@@ -1933,96 +2554,80 @@
 
         <div class="why-card">
 
-
           <div class="why-icon">
             ✓
           </div>
 
-
           <h3>
-            Genuine reviews
+            Genuine customer feedback
           </h3>
-
 
           <p>
 
-            We focus on requesting authentic feedback from real customers,
-            not manufacturing or buying reviews.
+            We help businesses request authentic feedback from real
+            customers. No bought reviews. No manufactured ratings.
 
           </p>
-
 
         </div>
 
 
         <div class="why-card">
-
 
           <div class="why-icon">
             ◎
           </div>
 
-
           <h3>
             Human oversight
           </h3>
 
-
           <p>
 
-            Automation can handle repetitive workflows while important
+            Repetitive workflows can be automated, while important
             reputation decisions still receive human attention.
 
           </p>
-
 
         </div>
 
 
         <div class="why-card">
-
 
           <div class="why-icon">
             ↗
           </div>
 
-
           <h3>
-            Actionable insights
+            Useful intelligence
           </h3>
-
 
           <p>
 
-            We look beyond star ratings to identify recurring complaints,
-            customer patterns, and competitive opportunities.
+            We look beyond star ratings to identify customer patterns,
+            competitor changes, and issues worth investigating.
 
           </p>
-
 
         </div>
 
 
         <div class="why-card">
 
-
           <div class="why-icon">
             ⌂
           </div>
 
-
           <h3>
-            Built for local businesses
+            Built around local competition
           </h3>
-
 
           <p>
 
-            Our approach is designed around businesses where customers
-            frequently compare providers before contacting one.
+            Our approach is designed for businesses where customers
+            frequently compare providers before choosing one.
 
           </p>
-
 
         </div>
 
@@ -2036,39 +2641,33 @@
 
   <!-- PRICING -->
 
-  <section id="pricing">
+  <section class="pricing" id="pricing">
 
     <div class="container">
 
 
-      <div class="section-header">
-
+      <div class="section-header center">
 
         <div class="section-label">
           Straightforward pricing
         </div>
 
-
         <h2>
           Know what the investment looks like.
         </h2>
 
-
         <p class="section-description">
 
-          These plans give you a clear idea of our service levels.
-          Your audit comes first so we can determine what actually fits.
+          These plans show the level of support available. Your audit comes
+          first so we can determine which approach actually fits.
 
         </p>
-
 
       </div>
 
 
       <div class="pricing-grid">
 
-
-        <!-- SHIELD -->
 
         <div class="pricing-card">
 
@@ -2132,8 +2731,6 @@
         </div>
 
 
-        <!-- CITADEL -->
-
         <div class="pricing-card featured">
 
 
@@ -2149,8 +2746,8 @@
 
           <div class="pricing-description">
 
-            Reputation growth for businesses serious about building a stronger
-            customer pipeline and competitive position.
+            Reputation growth for businesses serious about building a
+            stronger customer pipeline and competitive position.
 
           </div>
 
@@ -2217,8 +2814,6 @@
 
         </div>
 
-
-        <!-- CITADEL+ -->
 
         <div class="pricing-card">
 
@@ -2295,8 +2890,8 @@
 
       <p class="pricing-note">
 
-        No payment is required to request an audit. We'll review your situation
-        before recommending a plan.
+        No payment is required to request an audit. We'll review your
+        situation before recommending a plan.
 
       </p>
 
@@ -2310,10 +2905,11 @@
 
   <section class="scalpel">
 
-    <div class="container scalpel-grid">
+
+    <div class="container scalpel-layout">
 
 
-      <div>
+      <div class="scalpel-copy">
 
 
         <div class="section-label">
@@ -2335,29 +2931,30 @@
         </p>
 
 
-        <ul class="scalpel-list">
+        <div class="scalpel-points">
 
-          <li>
+
+          <div class="scalpel-point">
             Case-by-case evaluation
-          </li>
+          </div>
 
-          <li>
-            Policy-based dispute process
-          </li>
 
-          <li>
-            No fake reviews or manipulation
-          </li>
+          <div class="scalpel-point">
+            Policy-based disputes
+          </div>
 
-          <li>
+
+          <div class="scalpel-point">
+            No review manipulation
+          </div>
+
+
+          <div class="scalpel-point">
             $0 upfront
-          </li>
+          </div>
 
-          <li>
-            Pay after verified resolution
-          </li>
 
-        </ul>
+        </div>
 
 
       </div>
@@ -2381,8 +2978,8 @@
 
         <div class="scalpel-note">
 
-          This is a specialized service and is separate from our recurring
-          reputation management plans.
+          The Scalpel is separate from the recurring LocalCred reputation
+          management plans and is evaluated individually.
 
         </div>
 
@@ -2392,6 +2989,7 @@
 
     </div>
 
+
   </section>
 
 
@@ -2399,26 +2997,28 @@
 
   <section class="industries">
 
-    <div class="container">
+
+    <div class="container industry-wrap">
 
 
-      <div class="section-header">
+      <div>
 
 
         <div class="section-label">
-          Built for high-consideration businesses
+          Best fit
         </div>
 
 
         <h2>
-          Especially useful when customers compare before they call.
+          Built for businesses where customers compare before they call.
         </h2>
 
 
-        <p class="section-description">
+        <p>
 
-          LocalCred is designed for businesses where reputation can
-          meaningfully influence a customer's decision.
+          LocalCred is particularly suited to high-consideration local
+          businesses where online reputation is an important part of the
+          customer's research process.
 
         </p>
 
@@ -2480,19 +3080,20 @@
 
       </div>
 
+
     </div>
+
 
   </section>
 
 
-  <!-- AUDIT / LEAD FORM -->
+  <!-- AUDIT -->
 
   <section class="audit-section" id="audit">
 
+
     <div class="container audit-layout">
 
-
-      <!-- AUDIT COPY -->
 
       <div class="audit-copy">
 
@@ -2503,15 +3104,14 @@
 
 
         <h2>
-          First, let's show you what's happening with your reputation.
+          See what's happening with your reputation before deciding what to do next.
         </h2>
 
 
         <p>
 
-          Before recommending a plan, we'll review your current online
-          reputation and competitive position and show you where the
-          biggest opportunities are.
+          We'll review your current reputation and competitive position,
+          then show you the biggest opportunities we see.
 
         </p>
 
@@ -2530,7 +3130,7 @@
 
 
           <li>
-            Recurring complaints or customer concerns
+            Recurring customer complaints or themes
           </li>
 
 
@@ -2540,7 +3140,7 @@
 
 
           <li>
-            The biggest opportunity we see for your business
+            The biggest opportunity we identify
           </li>
 
 
@@ -2550,14 +3150,14 @@
         <div class="audit-expectation">
 
           <strong>
-            What happens next?
+            What happens after you submit?
           </strong>
 
           <span>
 
             We review your information, prepare the audit, and follow up
-            with what we found. If LocalCred is a good fit, we'll recommend
-            the service level that makes the most sense.
+            with what we found. If LocalCred is a fit, we'll recommend the
+            appropriate service level.
 
           </span>
 
@@ -2615,7 +3215,7 @@
               <input
                 type="text"
                 id="businessName"
-                name="business_name"
+                name="Business Name"
                 placeholder="Apex Home Services"
                 required
               >
@@ -2637,12 +3237,16 @@
 
               <select
                 id="businessType"
-                name="business_type"
+                name="Business Type"
                 required
               >
 
 
-                <option value="" selected disabled>
+                <option
+                  value=""
+                  selected
+                  disabled
+                >
                   Select an industry
                 </option>
 
@@ -2673,7 +3277,7 @@
               <label for="website">
 
                 Business Website
-                <span style="font-weight:500;color:#98a2b3;">
+                <span class="optional">
                   (optional)
                 </span>
 
@@ -2683,7 +3287,7 @@
               <input
                 type="url"
                 id="website"
-                name="website"
+                name="Business Website"
                 placeholder="https://example.com"
               >
 
@@ -2705,7 +3309,7 @@
               <input
                 type="text"
                 id="city"
-                name="city_service_area"
+                name="City / Service Area"
                 placeholder="Houston, TX"
                 required
               >
@@ -2728,7 +3332,7 @@
               <input
                 type="email"
                 id="email"
-                name="email"
+                name="Best Email"
                 placeholder="you@business.com"
                 required
               >
@@ -2743,7 +3347,7 @@
               <label for="concern">
 
                 Biggest Concern
-                <span style="font-weight:500;color:#98a2b3;">
+                <span class="optional">
                   (optional)
                 </span>
 
@@ -2752,7 +3356,7 @@
 
               <select
                 id="concern"
-                name="biggest_concern"
+                name="Biggest Concern"
               >
 
 
@@ -2794,6 +3398,8 @@
           </div>
 
 
+          <!-- FORMSPREE METADATA -->
+
           <input
             type="hidden"
             name="_subject"
@@ -2803,8 +3409,8 @@
 
           <input
             type="hidden"
-            name="_captcha"
-            value="false"
+            name="LocalCred Website"
+            value="https://localcred-web.github.io/LocalCred/"
           >
 
 
@@ -2845,17 +3451,19 @@
 
     </div>
 
+
   </section>
 
 
   <!-- FAQ -->
 
-  <section id="faq">
+  <section class="faq-section" id="faq">
+
 
     <div class="container">
 
 
-      <div class="section-header">
+      <div class="section-header center">
 
 
         <div class="section-label">
@@ -2877,15 +3485,20 @@
         <div class="faq-item">
 
 
-          <div class="faq-question">
+          <button
+            class="faq-question"
+            type="button"
+          >
 
-            Do you create fake reviews?
+            <span>
+              Do you create fake reviews?
+            </span>
 
             <span>
               +
             </span>
 
-          </div>
+          </button>
 
 
           <div class="faq-answer">
@@ -2903,23 +3516,27 @@
         <div class="faq-item">
 
 
-          <div class="faq-question">
+          <button
+            class="faq-question"
+            type="button"
+          >
 
-            Can you guarantee more 5-star reviews?
+            <span>
+              Can you guarantee more 5-star reviews?
+            </span>
 
             <span>
               +
             </span>
 
-          </div>
+          </button>
 
 
           <div class="faq-answer">
 
             No legitimate reputation service can guarantee what customers
-            will say. Our job is to make it easier for satisfied customers
-            to leave genuine feedback and to help your business respond
-            professionally to all types of reviews.
+            will say. Our role is to make it easier for customers to provide
+            genuine feedback and help your business respond professionally.
 
           </div>
 
@@ -2930,22 +3547,27 @@
         <div class="faq-item">
 
 
-          <div class="faq-question">
+          <button
+            class="faq-question"
+            type="button"
+          >
 
-            Do you delete negative reviews?
+            <span>
+              Do you delete negative reviews?
+            </span>
 
             <span>
               +
             </span>
 
-          </div>
+          </button>
 
 
           <div class="faq-answer">
 
-            We don't attempt to remove legitimate criticism. If content
-            appears to violate a platform's policies, we can evaluate it
-            separately through our specialized dispute service.
+            We don't attempt to remove legitimate criticism. If specific
+            content appears to violate a platform's policies, it can be
+            evaluated separately through The Scalpel.
 
           </div>
 
@@ -2956,22 +3578,27 @@
         <div class="faq-item">
 
 
-          <div class="faq-question">
+          <button
+            class="faq-question"
+            type="button"
+          >
 
-            Do I have to manage the reviews myself?
+            <span>
+              Do I have to manage the reviews myself?
+            </span>
 
             <span>
               +
             </span>
 
-          </div>
+          </button>
 
 
           <div class="faq-answer">
 
-            No. Depending on your package, LocalCred can monitor new
-            reviews, prepare or manage responses, provide alerts, and
-            deliver recurring reputation reports.
+            No. Depending on your plan, LocalCred can handle ongoing review
+            monitoring, responses, alerts, feedback-request systems, and
+            recurring reporting.
 
           </div>
 
@@ -2982,15 +3609,20 @@
         <div class="faq-item">
 
 
-          <div class="faq-question">
+          <button
+            class="faq-question"
+            type="button"
+          >
 
-            What businesses are a good fit?
+            <span>
+              What businesses are a good fit?
+            </span>
 
             <span>
               +
             </span>
 
-          </div>
+          </button>
 
 
           <div class="faq-answer">
@@ -2998,7 +3630,7 @@
             We are particularly focused on high-consideration local
             businesses such as home services, auto repair, moving companies,
             wedding services, veterinary clinics, and similar businesses
-            where customers frequently compare providers online.
+            where customers commonly compare providers online.
 
           </div>
 
@@ -3009,23 +3641,28 @@
         <div class="faq-item">
 
 
-          <div class="faq-question">
+          <button
+            class="faq-question"
+            type="button"
+          >
 
-            What happens after I request an audit?
+            <span>
+              What happens after I request an audit?
+            </span>
 
             <span>
               +
             </span>
 
-          </div>
+          </button>
 
 
           <div class="faq-answer">
 
             We'll review your current reputation, look at relevant
             competitors, identify the biggest opportunities, and follow up
-            with what we found. If LocalCred is a good fit, we'll recommend
-            the level of support that makes sense for your business.
+            with what we found. If LocalCred is a fit, we'll recommend the
+            appropriate service level.
 
           </div>
 
@@ -3036,20 +3673,25 @@
         <div class="faq-item">
 
 
-          <div class="faq-question">
+          <button
+            class="faq-question"
+            type="button"
+          >
 
-            Do I have to buy a plan after the audit?
+            <span>
+              Do I have to buy a plan after the audit?
+            </span>
 
             <span>
               +
             </span>
 
-          </div>
+          </button>
 
 
           <div class="faq-answer">
 
-            No. The audit is intended to give you useful information about
+            No. The audit is designed to give you useful information about
             your reputation whether or not you become a LocalCred client.
 
           </div>
@@ -3069,6 +3711,7 @@
 
   <section class="final-cta">
 
+
     <div class="container">
 
 
@@ -3078,9 +3721,7 @@
 
 
       <h2>
-
         See where your reputation stands before you decide what to do next.
-
       </h2>
 
 
@@ -3103,7 +3744,7 @@
           class="btn btn-primary"
         >
 
-          Get Your Free Reputation Audit
+          Get Your Free Reputation Audit →
 
         </a>
 
@@ -3130,38 +3771,44 @@
 
   <footer>
 
+
     <div class="container footer-inner">
 
 
-      <div class="footer-copy">
+      <div>
 
-        © 2026 LocalCred. Reputation management for local businesses.
+        <div class="footer-brand">
+          LocalCred
+        </div>
+
+        <div class="footer-copy">
+          © 2026 LocalCred. Reputation management for local businesses.
+        </div>
 
       </div>
 
 
       <div class="footer-links">
 
-
         <a href="#services">
           Services
         </a>
-
 
         <a href="#pricing">
           Pricing
         </a>
 
+        <a href="#process">
+          How It Works
+        </a>
 
         <a href="#faq">
           FAQ
         </a>
 
-
         <a href="#audit">
           Get an Audit
         </a>
-
 
       </div>
 
@@ -3277,6 +3924,7 @@
 
 
         submitButton.disabled = true;
+
 
         submitButton.textContent =
           "Submitting...";
