@@ -1192,69 +1192,6 @@
       margin-top:9px;
     }
 
-    /* SCALPEL */
-    .scalpel{
-      background:var(--navy);
-      color:#fff;
-    }
-
-    .scalpel-grid{
-      display:grid;
-      grid-template-columns:1fr .9fr;
-      gap:80px;
-      align-items:center;
-    }
-
-    .scalpel h2{
-      max-width:670px;
-      color:#fff;
-    }
-
-    .scalpel p{
-      max-width:650px;
-      margin-top:20px;
-      color:#c6d1df;
-      font-size:17px;
-    }
-
-    .scalpel-card{
-      padding:28px;
-      border:1px solid rgba(255,255,255,.13);
-      border-radius:17px;
-      background:rgba(255,255,255,.04);
-    }
-
-    .scalpel-price{
-      color:#fff;
-      font-size:34px;
-      font-weight:950;
-    }
-
-    .scalpel-price span{
-      color:#aebdce;
-      font-size:14px;
-      font-weight:600;
-    }
-
-    .scalpel-list{
-      display:flex;
-      flex-direction:column;
-      gap:11px;
-      margin-top:20px;
-    }
-
-    .scalpel-list div{
-      color:#d7e0eb;
-      font-size:14px;
-    }
-
-    .scalpel-note{
-      margin-top:20px;
-      color:#96a8bc;
-      font-size:12px;
-      line-height:1.6;
-    }
-
     /* INDUSTRIES */
     .industries-grid{
       display:grid;
@@ -1566,7 +1503,6 @@
       .problem-grid,
       .outcome-grid,
       .report-grid,
-      .scalpel-grid,
       .industries-grid,
       .audit-grid{
         grid-template-columns:1fr;
@@ -1583,7 +1519,6 @@
       .problem-grid,
       .outcome-grid,
       .report-grid,
-      .scalpel-grid,
       .industries-grid,
       .audit-grid{
         gap:48px;
@@ -2751,80 +2686,6 @@
       </div>
     </section>
 
-    <!-- SCALPEL -->
-    <section class="section scalpel">
-      <div class="container scalpel-grid">
-
-        <div>
-
-          <div
-            class="eyebrow"
-            style="color:#9dc1ff;"
-          >
-            Specialized service
-          </div>
-
-          <h2>
-            Have a review that appears to violate platform policy?
-          </h2>
-
-          <p>
-            The Scalpel is a performance-based dispute service for specific
-            content that appears to have a legitimate basis for removal under
-            the applicable platform's policies.
-          </p>
-
-          <p style="font-size:14px;color:#95a9bd;">
-            Removal is never guaranteed. We do not use fake reviews,
-            false reports, or manipulation.
-          </p>
-
-        </div>
-
-        <div class="scalpel-card">
-
-          <div class="scalpel-price">
-            $600–$1,500<span>/result</span>
-          </div>
-
-          <div class="scalpel-list">
-
-            <div>
-              ✓ No upfront payment
-            </div>
-
-            <div>
-              ✓ Case-specific review assessment
-            </div>
-
-            <div>
-              ✓ Policy-based dispute submission
-            </div>
-
-            <div>
-              ✓ Pay after verified resolution
-            </div>
-
-          </div>
-
-          <div class="scalpel-note">
-            Best suited for legitimate policy-based removal cases rather than
-            ordinary negative customer feedback.
-          </div>
-
-          <a
-            class="btn"
-            href="#audit"
-            style="margin-top:22px;background:#fff;color:#10233f;width:100%;"
-          >
-            Request a Case Review
-          </a>
-
-        </div>
-
-      </div>
-    </section>
-
     <!-- INDUSTRIES -->
     <section class="section">
       <div class="container industries-grid">
@@ -3117,6 +2978,8 @@
 
         <div class="faq-grid">
 
+          <!-- GENERAL FAQ -->
+
           <div class="faq-item">
 
             <button class="faq-question" type="button">
@@ -3175,9 +3038,9 @@
 
             <div class="faq-answer">
               <p>
-                No. Removal depends on whether content violates the applicable
-                platform's policies. The Scalpel is intended only for legitimate
-                policy-based disputes.
+                No. LocalCred does not guarantee the removal of negative
+                reviews. Review platforms make their own decisions based on
+                their applicable policies.
               </p>
             </div>
 
@@ -3244,6 +3107,100 @@
                 High-consideration local businesses where prospects commonly
                 research reputation before calling, booking, or requesting
                 an estimate tend to benefit most from systematic management.
+              </p>
+            </div>
+
+          </div>
+
+          <!-- BILLING & SUBSCRIPTIONS -->
+
+          <div class="faq-item">
+
+            <button class="faq-question" type="button">
+              <span>
+                How does billing work?
+              </span>
+
+              <span class="faq-icon">
+                +
+              </span>
+            </button>
+
+            <div class="faq-answer">
+              <p>
+                All LocalCred plans are billed month to month. There is no
+                long-term contract or required commitment. Your plan renews
+                monthly unless either you or LocalCred chooses to end the
+                engagement.
+              </p>
+            </div>
+
+          </div>
+
+          <div class="faq-item">
+
+            <button class="faq-question" type="button">
+              <span>
+                Can I cancel at any time?
+              </span>
+
+              <span class="faq-icon">
+                +
+              </span>
+            </button>
+
+            <div class="faq-answer">
+              <p>
+                Yes. Both the business and LocalCred may end the engagement
+                at any time. You are not locked into a long-term contract.
+              </p>
+            </div>
+
+          </div>
+
+          <div class="faq-item">
+
+            <button class="faq-question" type="button">
+              <span>
+                What is your refund policy?
+              </span>
+
+              <span class="faq-icon">
+                +
+              </span>
+            </button>
+
+            <div class="faq-answer">
+              <p>
+                If the business chooses to end the engagement within 3 days
+                of the initial billing, the business will receive a full
+                refund of that initial payment. After the 3-day period,
+                payments for the current billing period are non-refundable.
+                If LocalCred chooses to end the engagement, the business will
+                receive a full refund for the applicable billing period.
+              </p>
+            </div>
+
+          </div>
+
+          <div class="faq-item">
+
+            <button class="faq-question" type="button">
+              <span>
+                Is there a long-term commitment?
+              </span>
+
+              <span class="faq-icon">
+                +
+              </span>
+            </button>
+
+            <div class="faq-answer">
+              <p>
+                No. LocalCred plans are month to month. You may continue for
+                as long as the service is useful to your business, and either
+                party can choose to end the engagement at any time, subject
+                to the refund policy.
               </p>
             </div>
 
@@ -3364,12 +3321,15 @@
       const businessName = normalizeValue(
         document.getElementById("businessName").value
       );
+
       const city = normalizeValue(
         document.getElementById("city").value
       );
+
       const email = normalizeValue(
         document.getElementById("email").value
       );
+
       const website = normalizeValue(
         document.getElementById("website").value
       );
@@ -3392,6 +3352,7 @@
         if (!Array.isArray(stored)) return [];
 
         const now = Date.now();
+
         const active = stored.filter(item =>
           item &&
           typeof item.timestamp === "number" &&
@@ -3404,6 +3365,7 @@
         );
 
         return active;
+
       } catch {
         return [];
       }
@@ -3444,6 +3406,7 @@
 
       // If a bot fills the honeypot, silently reject it before Formspree.
       const honeypot = document.getElementById("auditWebsiteConfirm");
+
       if (honeypot && honeypot.value.trim() !== "") {
         return;
       }
@@ -3455,8 +3418,10 @@
         showAuditMessage(
           "We've already received an audit request for this business. If you need to update your request, please email localcredrep@gmail.com."
         );
+
         submitButton.disabled = true;
         submitButton.textContent = "Request Already Received";
+
         return;
       }
 
@@ -3489,9 +3454,11 @@
         saveAuditSubmission(identity);
 
         auditForm.reset();
+
         showAuditMessage(
           "Thanks — your audit request was submitted successfully. We'll review it and get back to you."
         );
+
         submitButton.textContent = "Request Submitted ✓";
 
         setTimeout(() => {
@@ -3500,17 +3467,22 @@
         }, 4000);
 
       } catch (error) {
+
         submitButton.disabled = false;
         submitButton.textContent = originalText;
 
         if (error.message.includes("Too many requests")) {
+
           showAuditMessage(
             "We're receiving a lot of requests right now. Please wait a moment and try again."
           );
+
         } else {
+
           alert(
             "Something went wrong while submitting the form. Please try again or email localcredrep@gmail.com."
           );
+
         }
 
       } finally {
