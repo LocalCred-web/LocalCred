@@ -1399,6 +1399,18 @@
       margin-top:17px;
     }
 
+    /* Anti-spam honeypot: real visitors should never see or fill this field. */
+    .form-honeypot{
+      position:absolute !important;
+      left:-10000px !important;
+      top:auto !important;
+      width:1px !important;
+      height:1px !important;
+      overflow:hidden !important;
+      opacity:0 !important;
+      pointer-events:none !important;
+    }
+
     .form-disclaimer{
       margin-top:11px;
       color:var(--muted-light);
@@ -2918,6 +2930,17 @@
             action="https://formspree.io/f/xyeyndnv"
             method="POST"
           >
+            <!-- Formspree server-side honeypot. Humans should leave this empty. -->
+            <div class="form-honeypot" aria-hidden="true">
+              <label for="auditWebsiteConfirm">Leave this field empty</label>
+              <input
+                type="text"
+                id="auditWebsiteConfirm"
+                name="_gotcha"
+                tabindex="-1"
+                autocomplete="off"
+              >
+            </div>
 
             <div class="form-grid">
 
@@ -3305,22 +3328,145 @@
       });
     });
 
-    // Formspree submission
+    // Formspree submission + duplicate/rate protection
     const auditForm = document.getElementById("auditForm");
     const submitButton = document.getElementById("submitButton");
     const formSuccess = document.getElementById("formSuccess");
 
-    auditForm.addEventListener("submit", async (event) => {
+    /*
+      Protection layers:
+      1. Formspree's _gotcha honeypot catches many automated submissions server-side.
+      2. The submit button is locked while a request is in progress.
+      3. A 30-day browser cooldown prevents duplicate free-audit requests for
+         the same business/email/website from the same browser.
+      4. A successful request is stored only after Formspree accepts it.
 
+      Note: browser storage cannot provide true cross-device deduplication.
+      A determined user can clear storage or use another browser/device.
+      Cross-device enforcement requires a server/database.
+    */
+
+    const AUDIT_COOLDOWN_MS = 30 * 24 * 60 * 60 * 1000;
+    const AUDIT_COOLDOWN_KEY = "localcred_audit_submissions_v1";
+    const AUDIT_IN_FLIGHT_KEY = "localcred_audit_in_flight_v1";
+
+    function normalizeValue(value) {
+      return (value || "")
+        .trim()
+        .toLowerCase()
+        .replace(/https?:\/\//g, "")
+        .replace(/^www\./, "")
+        .replace(/\/$/, "")
+        .replace(/\s+/g, " ");
+    }
+
+    function getAuditIdentity() {
+      const businessName = normalizeValue(
+        document.getElementById("businessName").value
+      );
+      const city = normalizeValue(
+        document.getElementById("city").value
+      );
+      const email = normalizeValue(
+        document.getElementById("email").value
+      );
+      const website = normalizeValue(
+        document.getElementById("website").value
+      );
+
+      const keys = [
+        businessName && city ? `business:${businessName}|city:${city}` : "",
+        email ? `email:${email}` : "",
+        website ? `website:${website}` : ""
+      ].filter(Boolean);
+
+      return { keys };
+    }
+
+    function getStoredAuditSubmissions() {
+      try {
+        const stored = JSON.parse(
+          localStorage.getItem(AUDIT_COOLDOWN_KEY) || "[]"
+        );
+
+        if (!Array.isArray(stored)) return [];
+
+        const now = Date.now();
+        const active = stored.filter(item =>
+          item &&
+          typeof item.timestamp === "number" &&
+          now - item.timestamp < AUDIT_COOLDOWN_MS
+        );
+
+        localStorage.setItem(
+          AUDIT_COOLDOWN_KEY,
+          JSON.stringify(active)
+        );
+
+        return active;
+      } catch {
+        return [];
+      }
+    }
+
+    function findExistingAudit(identity) {
+      return getStoredAuditSubmissions().find(submission =>
+        Array.isArray(submission.keys) &&
+        submission.keys.some(key => identity.keys.includes(key))
+      );
+    }
+
+    function saveAuditSubmission(identity) {
+      const submissions = getStoredAuditSubmissions();
+
+      submissions.push({
+        timestamp: Date.now(),
+        keys: identity.keys
+      });
+
+      localStorage.setItem(
+        AUDIT_COOLDOWN_KEY,
+        JSON.stringify(submissions.slice(-25))
+      );
+    }
+
+    function showAuditMessage(message) {
+      formSuccess.textContent = message;
+      formSuccess.style.display = "block";
+    }
+
+    auditForm.addEventListener("submit", async (event) => {
       event.preventDefault();
+
+      if (sessionStorage.getItem(AUDIT_IN_FLIGHT_KEY) === "1") {
+        return;
+      }
+
+      // If a bot fills the honeypot, silently reject it before Formspree.
+      const honeypot = document.getElementById("auditWebsiteConfirm");
+      if (honeypot && honeypot.value.trim() !== "") {
+        return;
+      }
+
+      const identity = getAuditIdentity();
+      const existingSubmission = findExistingAudit(identity);
+
+      if (existingSubmission) {
+        showAuditMessage(
+          "We've already received an audit request for this business. If you need to update your request, please email localcredrep@gmail.com."
+        );
+        submitButton.disabled = true;
+        submitButton.textContent = "Request Already Received";
+        return;
+      }
 
       const originalText = submitButton.textContent;
 
       submitButton.disabled = true;
       submitButton.textContent = "Submitting...";
+      sessionStorage.setItem(AUDIT_IN_FLIGHT_KEY, "1");
 
       try {
-
         const response = await fetch(auditForm.action, {
           method: "POST",
           body: new FormData(auditForm),
@@ -3329,34 +3475,47 @@
           }
         });
 
-        if (response.ok) {
-
-          auditForm.reset();
-          formSuccess.style.display = "block";
-          submitButton.textContent = "Request Submitted ✓";
-
-          setTimeout(() => {
-            submitButton.disabled = false;
-            submitButton.textContent = originalText;
-          }, 4000);
-
-        } else {
-
-          throw new Error("Form submission failed.");
-
+        if (response.status === 429) {
+          throw new Error(
+            "Too many requests. Please wait a moment and try again."
+          );
         }
 
-      } catch (error) {
+        if (!response.ok) {
+          throw new Error("Form submission failed.");
+        }
 
+        // Only save the duplicate lock after Formspree confirms success.
+        saveAuditSubmission(identity);
+
+        auditForm.reset();
+        showAuditMessage(
+          "Thanks — your audit request was submitted successfully. We'll review it and get back to you."
+        );
+        submitButton.textContent = "Request Submitted ✓";
+
+        setTimeout(() => {
+          submitButton.disabled = true;
+          submitButton.textContent = "Audit Request Received";
+        }, 4000);
+
+      } catch (error) {
         submitButton.disabled = false;
         submitButton.textContent = originalText;
 
-        alert(
-          "Something went wrong while submitting the form. Please try again or email localcredrep@gmail.com."
-        );
+        if (error.message.includes("Too many requests")) {
+          showAuditMessage(
+            "We're receiving a lot of requests right now. Please wait a moment and try again."
+          );
+        } else {
+          alert(
+            "Something went wrong while submitting the form. Please try again or email localcredrep@gmail.com."
+          );
+        }
 
+      } finally {
+        sessionStorage.removeItem(AUDIT_IN_FLIGHT_KEY);
       }
-
     });
   </script>
 
