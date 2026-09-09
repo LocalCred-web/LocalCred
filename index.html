@@ -24,18 +24,29 @@ content="LocalCred helps local businesses strengthen their reputation, understan
       --blue-soft:#eff6ff;
       --gold:#d49a32;
       --gold-soft:#fff8e8;
+
       --green:#16a34a;
       --green-soft:#ecfdf3;
+      --green-border:#bbebcb;
+
+      --yellow:#ca8a04;
+      --yellow-soft:#fffbeb;
+      --yellow-border:#f1df9d;
+
       --red:#dc2626;
       --red-soft:#fef2f2;
+      --red-border:#f2c5c5;
+
       --text:#172033;
       --muted:#667085;
       --muted-2:#98a2b3;
       --border:#e5e7eb;
       --background:#f7f9fc;
       --white:#fff;
+
       --shadow:0 22px 70px rgba(11,31,58,.10);
       --shadow-small:0 10px 35px rgba(11,31,58,.07);
+
       --max:1180px;
     }
 
@@ -235,7 +246,7 @@ content="LocalCred helps local businesses strengthen their reputation, understan
     .hero{
       position:relative;
       overflow:hidden;
-      padding:78px 0 92px;
+      padding:38px 0 82px;
       background:
         radial-gradient(circle at 78% 20%,rgba(37,99,235,.09),transparent 28%),
         radial-gradient(circle at 100% 100%,rgba(212,154,50,.08),transparent 28%);
@@ -296,7 +307,7 @@ content="LocalCred helps local businesses strengthen their reputation, understan
 
 
     /* =========================
-       REPUTATION PREVIEW
+       REPUTATION INTELLIGENCE PREVIEW
     ========================= */
 
     .preview-card{
@@ -312,22 +323,35 @@ content="LocalCred helps local businesses strengthen their reputation, understan
       align-items:center;
       justify-content:space-between;
       gap:15px;
-      padding:20px 24px;
+      padding:18px 24px;
       border-bottom:1px solid var(--border);
+      background:#fbfcfe;
     }
 
     .preview-brand{
       color:var(--navy);
-      font-size:13px;
+      font-size:12px;
       font-weight:950;
-      letter-spacing:.07em;
+      letter-spacing:.08em;
+    }
+
+    .preview-header-right{
+      display:flex;
+      align-items:center;
+      gap:14px;
+    }
+
+    .preview-period{
+      color:var(--muted-2);
+      font-size:9px;
+      font-weight:750;
     }
 
     .preview-status{
       display:flex;
       align-items:center;
       gap:7px;
-      color:#667085;
+      color:#526174;
       font-size:10px;
       font-weight:800;
     }
@@ -338,23 +362,67 @@ content="LocalCred helps local businesses strengthen their reputation, understan
       height:7px;
       border-radius:50%;
       background:var(--green);
+      box-shadow:0 0 0 3px var(--green-soft);
     }
 
     .preview-body{
       padding:25px;
     }
 
+    .preview-report-top{
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-start;
+      gap:20px;
+    }
+
     .preview-title{
       color:var(--navy);
-      font-size:25px;
+      font-size:24px;
       font-weight:900;
       line-height:1.15;
     }
 
     .preview-subtitle{
       margin-top:7px;
+      max-width:500px;
       font-size:12px;
       line-height:1.5;
+    }
+
+    .preview-score{
+      flex-shrink:0;
+      min-width:76px;
+      padding:10px 12px;
+      border:1px solid var(--green-border);
+      border-radius:11px;
+      background:var(--green-soft);
+      text-align:center;
+    }
+
+    .preview-score small{
+      display:block;
+      color:#4d7c5d;
+      font-size:7px;
+      font-weight:900;
+      letter-spacing:.07em;
+      text-transform:uppercase;
+    }
+
+    .preview-score strong{
+      display:block;
+      margin-top:3px;
+      color:#166534;
+      font-size:22px;
+      line-height:1;
+    }
+
+    .preview-score span{
+      display:block;
+      margin-top:4px;
+      color:#4d7c5d;
+      font-size:8px;
+      font-weight:800;
     }
 
     .preview-metrics{
@@ -365,7 +433,7 @@ content="LocalCred helps local businesses strengthen their reputation, understan
     }
 
     .preview-metric{
-      padding:15px;
+      padding:14px;
       border:1px solid var(--border);
       border-radius:12px;
       background:#fff;
@@ -383,22 +451,98 @@ content="LocalCred helps local businesses strengthen their reputation, understan
       display:block;
       margin-top:6px;
       color:var(--navy);
-      font-size:23px;
+      font-size:22px;
       font-weight:950;
       line-height:1;
     }
 
-    .preview-insight{
-      margin-top:13px;
-      padding:16px;
-      border:1px solid #d8e4f8;
-      border-radius:12px;
-      background:var(--blue-soft);
+    .metric-change{
+      display:flex;
+      align-items:center;
+      gap:4px;
+      margin-top:7px;
+      font-size:8px;
+      font-weight:850;
     }
 
-    .preview-insight small{
-      color:var(--blue-dark);
-      font-size:9px;
+    .metric-change.positive{
+      color:var(--green);
+    }
+
+    .metric-change.watch{
+      color:var(--yellow);
+    }
+
+    .metric-change.risk{
+      color:var(--red);
+    }
+
+    .preview-section-label{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:15px;
+      margin-top:21px;
+      padding-bottom:8px;
+      border-bottom:1px solid var(--border);
+    }
+
+    .preview-section-label strong{
+      color:var(--navy);
+      font-size:10px;
+      font-weight:900;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+    }
+
+    .preview-section-label span{
+      color:var(--muted-2);
+      font-size:8px;
+    }
+
+    .preview-insight{
+      display:grid;
+      grid-template-columns:auto 1fr;
+      gap:12px;
+      margin-top:11px;
+      padding:15px;
+      border:1px solid var(--yellow-border);
+      border-radius:12px;
+      background:#fffdfa;
+    }
+
+    .signal-dot{
+      width:9px;
+      height:9px;
+      margin-top:5px;
+      border-radius:50%;
+      flex-shrink:0;
+    }
+
+    .signal-dot.green{
+      background:var(--green);
+      box-shadow:0 0 0 3px var(--green-soft);
+    }
+
+    .signal-dot.yellow{
+      background:var(--yellow);
+      box-shadow:0 0 0 3px var(--yellow-soft);
+    }
+
+    .signal-dot.red{
+      background:var(--red);
+      box-shadow:0 0 0 3px var(--red-soft);
+    }
+
+    .preview-signal-heading{
+      display:flex;
+      align-items:center;
+      gap:8px;
+    }
+
+    .preview-signal-heading small{
+      color:var(--yellow);
+      font-size:8px;
       font-weight:900;
       letter-spacing:.08em;
       text-transform:uppercase;
@@ -406,14 +550,14 @@ content="LocalCred helps local businesses strengthen their reputation, understan
 
     .preview-insight strong{
       display:block;
-      margin-top:5px;
+      margin-top:4px;
       color:var(--navy);
-      font-size:16px;
-      line-height:1.25;
+      font-size:14px;
+      line-height:1.3;
     }
 
     .preview-insight p{
-      margin-top:5px;
+      margin-top:4px;
       font-size:10px;
       line-height:1.5;
     }
@@ -422,32 +566,101 @@ content="LocalCred helps local businesses strengthen their reputation, understan
       display:grid;
       grid-template-columns:1fr 1fr;
       gap:10px;
-      margin-top:12px;
+      margin-top:10px;
     }
 
     .preview-signal{
-      padding:14px;
+      display:grid;
+      grid-template-columns:auto 1fr;
+      gap:10px;
+      padding:13px;
       border:1px solid var(--border);
       border-radius:11px;
+      background:#fff;
     }
 
     .preview-signal strong{
+      display:block;
       color:var(--navy);
-      font-size:11px;
+      font-size:10px;
+      line-height:1.3;
     }
 
     .preview-signal p{
       margin-top:4px;
-      font-size:10px;
+      font-size:9px;
       line-height:1.45;
     }
 
+    .signal-meta{
+      display:flex;
+      align-items:center;
+      gap:6px;
+      margin-top:7px;
+    }
+
+    .signal-meta span{
+      font-size:7px;
+      font-weight:850;
+      letter-spacing:.04em;
+      text-transform:uppercase;
+    }
+
+    .signal-meta .positive-label{
+      color:var(--green);
+    }
+
+    .signal-meta .watch-label{
+      color:var(--yellow);
+    }
+
+    .signal-meta .risk-label{
+      color:var(--red);
+    }
+
+    .preview-priority{
+      margin-top:10px;
+      padding:13px 15px;
+      border-radius:11px;
+      background:#f8fafc;
+      border:1px solid var(--border);
+    }
+
+    .preview-priority-head{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:15px;
+    }
+
+    .preview-priority-head strong{
+      color:var(--navy);
+      font-size:10px;
+      font-weight:900;
+      letter-spacing:.06em;
+      text-transform:uppercase;
+    }
+
+    .priority-level{
+      color:var(--red);
+      font-size:8px;
+      font-weight:900;
+      letter-spacing:.07em;
+      text-transform:uppercase;
+    }
+
+    .preview-priority p{
+      margin-top:5px;
+      font-size:9px;
+      line-height:1.5;
+    }
+
     .preview-footer{
-      margin-top:16px;
-      padding-top:14px;
+      margin-top:15px;
+      padding-top:13px;
       border-top:1px solid var(--border);
       color:var(--muted-2);
-      font-size:9px;
+      font-size:8px;
       line-height:1.5;
     }
 
@@ -1484,6 +1697,14 @@ content="LocalCred helps local businesses strengthen their reputation, understan
         padding:82px 0;
       }
 
+      .preview-report-top{
+        flex-direction:column;
+      }
+
+      .preview-score{
+        align-self:flex-start;
+      }
+
       .preview-metrics{
         grid-template-columns:1fr;
       }
@@ -1532,7 +1753,7 @@ content="LocalCred helps local businesses strengthen their reputation, understan
       }
 
       .hero{
-        padding:57px 0 70px;
+        padding:34px 0 62px;
       }
 
       h1{
@@ -1557,6 +1778,20 @@ content="LocalCred helps local businesses strengthen their reputation, understan
       }
 
       .comparison{
+        grid-template-columns:1fr;
+      }
+
+      .preview-header{
+        align-items:flex-start;
+      }
+
+      .preview-header-right{
+        flex-direction:column;
+        align-items:flex-end;
+        gap:5px;
+      }
+
+      .preview-grid{
         grid-template-columns:1fr;
       }
 
@@ -1653,7 +1888,7 @@ content="LocalCred helps local businesses strengthen their reputation, understan
         Before a customer calls, requests an estimate, or books a service,
         they're comparing businesses they don't know. LocalCred manages your
         reputation, identifies what customers are telling you, and shows
-        where your online presence is helping — or hurting — your ability
+        where your online presence is helping or hurting your ability
         to win local customers.
       </p>
 
@@ -1682,96 +1917,248 @@ content="LocalCred helps local businesses strengthen their reputation, understan
     </div>
 
 
-    <!-- REPUTATION ANALYSIS PREVIEW -->
+    <!-- REPUTATION INTELLIGENCE REPORT -->
 
     <div class="preview-card">
 
       <div class="preview-header">
 
         <div class="preview-brand">
-          LOCALCRED
+          LOCALCRED INTELLIGENCE
         </div>
 
-        <div class="preview-status">
-          Reputation analysis
+        <div class="preview-header-right">
+
+          <div class="preview-period">
+            Last 30 days
+          </div>
+
+          <div class="preview-status">
+            Analysis current
+          </div>
+
         </div>
 
       </div>
 
+
       <div class="preview-body">
 
-        <div class="preview-title">
-          Your reputation tells a bigger story than your star rating.
+        <div class="preview-report-top">
+
+          <div>
+
+            <div class="preview-title">
+              Reputation Intelligence Report
+            </div>
+
+            <p class="preview-subtitle">
+              A snapshot of the signals shaping customer trust,
+              reputation momentum, and areas that deserve attention.
+            </p>
+
+          </div>
+
+          <div class="preview-score">
+
+            <small>
+              Overall health
+            </small>
+
+            <strong>
+              82
+            </strong>
+
+            <span>
+              Strong
+            </span>
+
+          </div>
+
         </div>
 
-        <p class="preview-subtitle">
-          LocalCred looks beyond the number to identify the signals that
-          influence customer trust and competitive position.
-        </p>
 
         <div class="preview-metrics">
 
           <div class="preview-metric">
-            <small>Rating</small>
-            <strong>4.8 ★</strong>
+
+            <small>
+              Rating
+            </small>
+
+            <strong>
+              4.8 ★
+            </strong>
+
+            <div class="metric-change positive">
+              <span>↑</span>
+              <span>Stable strength</span>
+            </div>
+
           </div>
 
-          <div class="preview-metric">
-            <small>Reviews</small>
-            <strong>527</strong>
-          </div>
 
           <div class="preview-metric">
-            <small>Recent activity</small>
-            <strong>+34</strong>
+
+            <small>
+              Review volume
+            </small>
+
+            <strong>
+              527
+            </strong>
+
+            <div class="metric-change positive">
+              <span>↑</span>
+              <span>+34 this period</span>
+            </div>
+
+          </div>
+
+
+          <div class="preview-metric">
+
+            <small>
+              Response rate
+            </small>
+
+            <strong>
+              71%
+            </strong>
+
+            <div class="metric-change watch">
+              <span>•</span>
+              <span>Opportunity</span>
+            </div>
+
           </div>
 
         </div>
+
+
+        <div class="preview-section-label">
+
+          <strong>
+            Key signals
+          </strong>
+
+          <span>
+            Prioritized by impact
+          </span>
+
+        </div>
+
 
         <div class="preview-insight">
 
-          <small>
-            Opportunity
-          </small>
+          <div class="signal-dot yellow"></div>
 
-          <strong>
-            Recent customer feedback reveals a recurring experience issue.
-          </strong>
+          <div>
 
-          <p>
-            Patterns across reviews can point to problems worth addressing
-            before they affect more customers.
-          </p>
+            <div class="preview-signal-heading">
+
+              <small>
+                Opportunity
+              </small>
+
+            </div>
+
+            <strong>
+              Response coverage is leaving some recent feedback unanswered.
+            </strong>
+
+            <p>
+              Consistent responses can reinforce trust and show prospective
+              customers that feedback is actively monitored.
+            </p>
+
+          </div>
 
         </div>
+
 
         <div class="preview-grid">
 
           <div class="preview-signal">
-            <strong>
-              Customer signal
-            </strong>
 
-            <p>
-              Scheduling communication appears repeatedly in negative feedback.
-            </p>
+            <div class="signal-dot green"></div>
+
+            <div>
+
+              <strong>
+                Customer strength
+              </strong>
+
+              <p>
+                Technician professionalism is repeatedly praised across
+                recent positive reviews.
+              </p>
+
+              <div class="signal-meta">
+                <span class="positive-label">
+                  Strong signal
+                </span>
+              </div>
+
+            </div>
+
           </div>
 
-          <div class="preview-signal">
-            <strong>
-              Competitive signal
-            </strong>
 
-            <p>
-              Nearby competitors may be building recent social proof faster.
-            </p>
+          <div class="preview-signal">
+
+            <div class="signal-dot red"></div>
+
+            <div>
+
+              <strong>
+                Reputation risk
+              </strong>
+
+              <p>
+                Scheduling communication appears repeatedly in negative
+                customer feedback.
+              </p>
+
+              <div class="signal-meta">
+                <span class="risk-label">
+                  Recurring complaint
+                </span>
+              </div>
+
+            </div>
+
           </div>
 
         </div>
 
+
+        <div class="preview-priority">
+
+          <div class="preview-priority-head">
+
+            <strong>
+              Recommended priority
+            </strong>
+
+            <span class="priority-level">
+              High
+            </span>
+
+          </div>
+
+          <p>
+            Improve scheduling communication, maintain response coverage,
+            and continue building recent positive review activity.
+          </p>
+
+        </div>
+
+
         <div class="preview-footer">
-          LocalCred connects customer feedback, reputation activity, and
-          competitive signals so you know what deserves attention.
+          LocalCred combines review activity, customer themes, response
+          performance, and competitive signals to identify what deserves
+          attention next.
         </div>
 
       </div>
@@ -1991,7 +2378,7 @@ content="LocalCred helps local businesses strengthen their reputation, understan
       </div>
 
       <div class="model-disclaimer">
-        Illustrative model only — not a prediction or guarantee.
+        Illustrative model only, not a prediction or guarantee.
         Actual customer value and ROI vary by business, market, service mix,
         conversion rate, and other factors.
       </div>
@@ -2101,8 +2488,8 @@ content="LocalCred helps local businesses strengthen their reputation, understan
         </p>
 
         <div class="intelligence-example">
-          Instead of “527 reviews,” see:
-          “Improve scheduling communication and strengthen recent review activity.”
+          Instead of "527 reviews," see:
+          "Improve scheduling communication and strengthen recent review activity."
         </div>
 
       </div>
@@ -2691,7 +3078,7 @@ content="LocalCred helps local businesses strengthen their reputation, understan
       </div>
 
       <h2>
-        Find out where your reputation is helping — and where it may be costing you customers.
+        Find out where your reputation is helping and where it may be costing you customers.
       </h2>
 
       <p>
@@ -2972,7 +3359,7 @@ content="LocalCred helps local businesses strengthen their reputation, understan
           class="form-success"
           id="formSuccess"
         >
-          Thanks — your audit request was submitted successfully.
+          Thanks, your audit request was submitted successfully.
         </div>
 
 
@@ -3248,7 +3635,7 @@ content="LocalCred helps local businesses strengthen their reputation, understan
 
           <p>
             High-consideration local businesses tend to be the strongest
-            fit — especially businesses where customers commonly research
+            fit, especially businesses where customers commonly research
             several providers before calling, booking, or requesting an estimate.
           </p>
 
@@ -3277,7 +3664,7 @@ content="LocalCred helps local businesses strengthen their reputation, understan
       <div>
 
         <h2>
-          Is your reputation helping you win customers — or giving them a reason to choose someone else?
+          Is your reputation helping you win customers or giving them a reason to choose someone else?
         </h2>
 
         <p>
@@ -3666,7 +4053,7 @@ content="LocalCred helps local businesses strengthen their reputation, understan
 
 
           showAuditMessage(
-            "Thanks — your audit request was submitted successfully. We'll review it and get back to you."
+            "Thanks, your audit request was submitted successfully. We'll review it and get back to you."
           );
 
 
